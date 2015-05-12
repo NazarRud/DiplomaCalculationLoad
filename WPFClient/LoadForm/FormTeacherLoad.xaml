@@ -4,6 +4,7 @@
         Title="Навантаження на викладача" ResizeMode="CanMinimize" Height="300" Width="300" Loaded="FormTeacherLoad_OnLoaded">
     <Grid>
         <DataGrid HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="105" Width="241"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="29,173,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>
