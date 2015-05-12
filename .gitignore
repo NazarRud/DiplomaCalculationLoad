@@ -49,6 +49,8 @@ WPFClient/bin
 WPFClient/obj
 TestClient/bin
 TestClient/obj
+Reports/bin
+Reports/obj
 packages
 bin
 obj
