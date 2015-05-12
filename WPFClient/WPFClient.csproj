@@ -252,8 +252,11 @@
       <Project>{bbab486c-fb88-4845-a525-1990a90caf31}</Project>
       <Name>Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Reports\Reports.csproj">
+      <Project>{4adad01a-7a54-497f-8b91-425078d00428}</Project>
+      <Name>Reports</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
