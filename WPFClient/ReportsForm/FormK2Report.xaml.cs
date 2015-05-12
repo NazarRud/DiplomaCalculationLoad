@@ -11,6 +11,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+//using Reports;
+//using Reports.ReportPages;
+//using Reports.ReportType;
+//using Reports.SaveFormats;
+
 namespace WPFClient.ReportsForm
 {
     /// <summary>
@@ -21,6 +26,12 @@ namespace WPFClient.ReportsForm
         public FormK2Report()
         {
             InitializeComponent();
+        }
+
+        private void CreateButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Report report = new K2Report(new PDFSaver("K2_Page_4"), new K2Page4BuilderPDF());
+            //report.CreateReport();
         }
     }
 }
