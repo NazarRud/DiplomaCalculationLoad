@@ -3,6 +3,7 @@ using WPFClient.EduInfoForm;
 using WPFClient.EduInfoForm.AboutInfoForm;
 using WPFClient.EduInfoForm.ContingentForm;
 using WPFClient.LoadForm;
+using WPFClient.ReportsForm;
 
 namespace WPFClient
 {
@@ -66,6 +67,24 @@ namespace WPFClient
 
         private void FormTeacherLoad_MenuItem_Click(object sender, RoutedEventArgs e)
         {
+        }
+
+        private void FormK2Report_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            FormK2Report formK2Report = new FormK2Report();
+            formK2Report.ShowDialog();
+        }
+
+        private void FormK4Report_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            FormK4Report formK4Report = new FormK4Report();
+            formK4Report.ShowDialog();
+        }
+
+        private void FormK5Report_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            FormK5Report formK5Report = new FormK5Report();
+            formK5Report.ShowDialog();
         }
     }
 }
