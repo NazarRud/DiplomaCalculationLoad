@@ -1,0 +1,20 @@
+﻿<Window x:Class="WPFClient.EduInfoForm.ContingentForm.FormFlow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Потік" Height="376" Width="818" ResizeMode="CanMinimize" Loaded="FlowForm_OnLoaded">
+    <Grid>
+        <DataGrid Name="DataGrid" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="281" Width="783">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Назва потоку" Width="300" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Бюджет" Width="60" Binding="{Binding Path=AllCountBudget}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Контракт" Width="70" Binding="{Binding Path=AllCountContract}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Груп по бюджету" Width="110" Binding="{Binding Path=CountSubGroupBudget}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Груп по контракту" Width="115" Binding="{Binding Path=CountSubGroupContract}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Тип навчання" Width="115" Binding="{Binding Path=EduType}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="AddButton" Content="Додати" Click="AddButton_OnClick" HorizontalAlignment="Left" Margin="10,296,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="EditButton" Content="Редагувати" Click="EditButton_OnClick" HorizontalAlignment="Left" Margin="90,296,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="DeleteButton" Content="Видалити" Click="DeleteButton_OnClick" HorizontalAlignment="Left" Margin="170,296,0,0" VerticalAlignment="Top" Width="75"/>
+    </Grid>
+</Window>

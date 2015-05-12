@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{54C6FFFF-A3E3-44BF-B7B0-182E9E14CB19}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WPFClient</RootNamespace>
+    <AssemblyName>WPFClient</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="EduInfoForm\AboutInfoForm\FormCathedra.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EduInfoForm\AboutInfoForm\FormCathedraEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EduInfoForm\AboutInfoForm\FormFaculty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EduInfoForm\AboutInfoForm\FormFacultyEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EduInfoForm\ContingentForm\FormFlow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EduInfoForm\ContingentForm\FormFlowEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EduInfoForm\ContingentForm\FormGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EduInfoForm\ContingentForm\FormGroupEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EduInfoForm\FormSubject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EduInfoForm\FormSubjectEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadForm\FormSubjectInfoB.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadForm\FormSubjectInfoBEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadForm\FormSubjectInfoK.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadForm\FormSubjectInfoKEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EduInfoForm\FormTeachers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EduInfoForm\FormTeachersEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadForm\FormTeacherLoad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadForm\FormTeacherLoadEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EduInfoForm\AboutInfoForm\FormCathedra.xaml.cs">
+      <DependentUpon>FormCathedra.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EduInfoForm\AboutInfoForm\FormCathedraEdit.xaml.cs">
+      <DependentUpon>FormCathedraEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EduInfoForm\AboutInfoForm\FormFaculty.xaml.cs">
+      <DependentUpon>FormFaculty.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EduInfoForm\AboutInfoForm\FormFacultyEdit.xaml.cs">
+      <DependentUpon>FormFacultyEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EduInfoForm\ContingentForm\FormFlow.xaml.cs">
+      <DependentUpon>FormFlow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EduInfoForm\ContingentForm\FormFlowEdit.xaml.cs">
+      <DependentUpon>FormFlowEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EduInfoForm\ContingentForm\FormGroup.xaml.cs">
+      <DependentUpon>FormGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EduInfoForm\ContingentForm\FormGroupEdit.xaml.cs">
+      <DependentUpon>FormGroupEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EduInfoForm\FormSubject.xaml.cs">
+      <DependentUpon>FormSubject.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EduInfoForm\FormSubjectEdit.xaml.cs">
+      <DependentUpon>FormSubjectEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoadForm\FormSubjectInfoB.xaml.cs">
+      <DependentUpon>FormSubjectInfoB.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoadForm\FormSubjectInfoBEdit.xaml.cs">
+      <DependentUpon>FormSubjectInfoBEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoadForm\FormSubjectInfoK.xaml.cs">
+      <DependentUpon>FormSubjectInfoK.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoadForm\FormSubjectInfoKEdit.xaml.cs">
+      <DependentUpon>FormSubjectInfoKEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EduInfoForm\FormTeachers.xaml.cs">
+      <DependentUpon>FormTeachers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EduInfoForm\FormTeachersEdit.xaml.cs">
+      <DependentUpon>FormTeachersEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoadForm\FormTeacherLoad.xaml.cs">
+      <DependentUpon>FormTeacherLoad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoadForm\FormTeacherLoadEdit.xaml.cs">
+      <DependentUpon>FormTeacherLoadEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{bbab486c-fb88-4845-a525-1990a90caf31}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

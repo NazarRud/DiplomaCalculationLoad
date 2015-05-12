@@ -1,0 +1,26 @@
+﻿<Window x:Class="WPFClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Головна" Height="572" Width="908" ResizeMode="CanMinimize">
+    <Grid>
+        <Menu Height="25" VerticalAlignment="Top" Width="Auto" Name="CalculationMenu" Margin="0,0,0,0" >
+            <MenuItem Header="Навчально-методична інформація" Width="Auto" Height="25">
+                <MenuItem Header="Загальна інформація" HorizontalAlignment="Stretch" Width="Auto">
+                    <MenuItem Header="Факультет" HorizontalAlignment="Stretch" Width="Auto" Click="FormFaculty_MenuItem_Click"/>
+                    <MenuItem Header="Кафедра" HorizontalAlignment="Stretch" Width="Auto" Click="FormCathedra_MenuItem_Click"/>
+                </MenuItem>
+                <MenuItem Header="Дисципліна" HorizontalAlignment="Stretch" Width="Auto" Click="FormSubject_MenuItem_Click"/>
+                <MenuItem Header="Контингент" HorizontalAlignment="Stretch" Width="Auto">
+                    <MenuItem Header="Група" HorizontalAlignment="Stretch" Width="Auto" Click="FormGroup_MenuItem_Click"/>
+                    <MenuItem Header="Потік" HorizontalAlignment="Stretch" Width="Auto" Click="FormFlow_MenuItem_Click"/>
+                </MenuItem>
+                <MenuItem Header="Викладач" HorizontalAlignment="Stretch" Width="Auto" Click="FormTeachersInfo_MenuItem_Click"/>
+            </MenuItem>
+            <MenuItem Header="Навантаження" Width="auto" Height="25">
+                <MenuItem Header="Дисципліна Бюджет" HorizontalAlignment="Stretch" Width="Auto" Click="FormSubjectInfoB_MenuItem_Click"/>
+                <MenuItem Header="Дисципліна Контракт" HorizontalAlignment="Stretch" Width="Auto" Click="FormSubjectInfoK_MenuItem_Click"/>
+                <MenuItem Header="Викладач" HorizontalAlignment="Stretch" Width="Auto" Click="FormTeacherLoad_MenuItem_Click"/>
+            </MenuItem>
+        </Menu>
+    </Grid>
+</Window>

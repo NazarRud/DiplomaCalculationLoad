@@ -1,0 +1,23 @@
+﻿<Window x:Class="WPFClient.EduInfoForm.ContingentForm.FormGroup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Група" Height="354" Width="989.547" ResizeMode="CanMinimize" Loaded="GroupAdd_OnLoaded">
+    <Grid>
+        <DataGrid Name="DataGrid" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="267" Width="949">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Курс" Width="100" Binding="{Binding Path=Course}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кафедра" Width="120" Binding="{Binding Path=Cathedra.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Назва групи" Width="100" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Бюджет" Width="100" Binding="{Binding Path=StudentsCountBudget}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Контракт" Width="100" Binding="{Binding Path=StudentsCountContract}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Загалом" Width="100" Binding="{Binding Path=StudentsCountTotal}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ОКР" Width="120" Binding="{Binding Path=QualificationLevel}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Форма навч." Width="100" Binding="{Binding Path=EducationForm}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Вид навч." Width="100" Binding="{Binding Path=EducationType}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="AddButton" Content="Додати" Click="AddButton_OnClick" HorizontalAlignment="Left" Margin="10,282,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="EditButton" Content="Редагувати" Click="EditButton_OnClick" HorizontalAlignment="Left" Margin="90,282,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="DeleteButton" Content="Видалити" Click="DeleteButton_OnClick" HorizontalAlignment="Left" Margin="170,282,0,0" VerticalAlignment="Top" Width="75"/>
+    </Grid>
+</Window>

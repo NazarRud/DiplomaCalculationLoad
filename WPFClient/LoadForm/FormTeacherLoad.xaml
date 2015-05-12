@@ -1,0 +1,8 @@
+﻿<Window x:Class="WPFClient.LoadForm.FormTeacherLoad"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Навантаження на викладача" ResizeMode="CanMinimize" Height="300" Width="300" Loaded="FormTeacherLoad_OnLoaded">
+    <Grid>
+        
+    </Grid>
+</Window>

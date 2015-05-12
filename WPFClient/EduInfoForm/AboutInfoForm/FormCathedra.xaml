@@ -1,0 +1,18 @@
+﻿<Window x:Class="WPFClient.EduInfoForm.AboutInfoForm.FormCathedra"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Кафедра" Height="374" Width="701" ResizeMode="CanMinimize" Loaded="DataGrid_OnLoaded">
+    <Grid Margin="0,0,0,1">
+        <DataGrid IsReadOnly="True" CanUserAddRows="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="285" Width="673" Name="DataGridCathedra" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Назва кафедри" Width="150" Binding="{Binding Path=Name}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Повна назва кафедри" Width="415" Binding="{Binding Path=FullName}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Факультет" Width="100" Binding="{Binding Path=Faculty.Name}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Додати" HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top" Width="75" Name="AddButton" Click="AddButton_OnClick"/>
+        <Button Content="Редагувати" HorizontalAlignment="Left" Margin="90,300,0,0" VerticalAlignment="Top" Width="75" Name="EditButton" Click="EditButton_OnClick" />
+        <Button Content="Видалити" HorizontalAlignment="Left" Margin="170,300,0,0" VerticalAlignment="Top" Width="75" Name="DeleteButton" Click="DeleteButton_OnClick"/>
+
+    </Grid>
+</Window>

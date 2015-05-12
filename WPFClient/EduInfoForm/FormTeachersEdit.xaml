@@ -1,0 +1,28 @@
+﻿<Window x:Class="WPFClient.EduInfoForm.FormTeachersEdit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Редагування" Height="281" Width="590" ResizeMode="CanMinimize" Loaded="TeachersGeneralInfoEdit_OnLoaded">
+    <Grid>
+        <Label Content="Прізвище" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TextBoxLastName" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TextBoxName" HorizontalAlignment="Left" Height="23" Margin="10,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Label Content="Побатькові" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TextBoxMiddleName" HorizontalAlignment="Left" Height="23" Margin="10,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Label Content="Ініціали" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TextBoxInitials" HorizontalAlignment="Left" Height="23" Margin="10,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Label Content="Посада" HorizontalAlignment="Left" Margin="304,10,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="ComboBoxAppointment" HorizontalAlignment="Left" Margin="304,37,0,0" VerticalAlignment="Top" Width="254"/>
+        <Label Content="Ступінь" HorizontalAlignment="Left" Margin="304,58,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="ComboBoxDegree" HorizontalAlignment="Left" Margin="304,85,0,0" VerticalAlignment="Top" Width="254"/>
+        <Label Content="Звання" HorizontalAlignment="Left" Margin="304,107,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="ComboBoxRank" HorizontalAlignment="Left" Margin="304,133,0,0" VerticalAlignment="Top" Width="254"/>
+        <Label Content="Кафедра" HorizontalAlignment="Left" Margin="304,155,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="ComboBoxCathedra" SelectionChanged="ComboBoxCathedra_OnSelectionChanged" HorizontalAlignment="Left" Margin="304,181,0,0" VerticalAlignment="Top" Width="124"/>
+        <Button Name="SaveButton" Content="Зберегти" Click="SaveButton_OnClick" HorizontalAlignment="Left" Margin="10,211,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="CancleButton" Content="Скасувати" Click="CancleButton_OnClick" HorizontalAlignment="Left" Margin="483,216,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Факультет" HorizontalAlignment="Left" Margin="436,157,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TextBoxFaculty" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="436,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122"/>
+
+    </Grid>
+</Window>
