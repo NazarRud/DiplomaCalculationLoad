@@ -22,7 +22,7 @@
                 <MenuItem Header="Викладач" HorizontalAlignment="Stretch" Width="Auto" Click="FormTeacherLoad_MenuItem_Click"/>
             </MenuItem>
             <MenuItem Header="Звіти">
-                <MenuItem Header="К2 (Інд. план)" HorizontalAlignment="Stretch" Width="Auto" Click="K2_MenuItem_Click"/>
+                <MenuItem Header="К2 (Інд. план)" HorizontalAlignment="Stretch" Width="Auto"/>
                 <MenuItem Header="К4 (По семестрам)" HorizontalAlignment="Stretch" Width="Auto"></MenuItem>
                 <MenuItem Header="К5" HorizontalAlignment="Stretch" Width="Auto"></MenuItem>
                 <MenuItem Header="Підсумки по викладачу" HorizontalAlignment="Stretch" Width="Auto"></MenuItem>
