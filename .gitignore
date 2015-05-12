@@ -43,6 +43,14 @@ Temporary Items
 .apdisk
 
 # C# build files
+Data/bin
+Data/obj
+WPFClient/bin
+WPFClient/obj
+TestClient/bin
+TestClient/obj
+packages
 bin
 obj
-.bak
+*.bak
+*.suo
