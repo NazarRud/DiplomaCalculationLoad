@@ -1,0 +1,8 @@
+﻿<Window x:Class="WPFClient.ReportsForm.FormK2Report"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FormK2Report" Height="319.173" Width="532.331">
+    <Grid>
+
+    </Grid>
+</Window>
