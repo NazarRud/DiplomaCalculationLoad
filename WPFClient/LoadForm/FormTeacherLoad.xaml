@@ -3,16 +3,37 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Навантаження на викладача" ResizeMode="CanMinimize" Height="493.585" Width="970.189" Loaded="FormTeacherLoad_OnLoaded">
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="410" Width="934">
+        <DataGrid Name="DataGridTeacherLoad" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="410" Width="934">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="" Width="" Binding="{Binding Path=}"></DataGridTextColumn>
-                <DataGridTextColumn Header="" Width="" Binding="{Binding Path=}"></DataGridTextColumn>
-                <DataGridTextColumn Header="" Width="" Binding="{Binding Path=}"></DataGridTextColumn>
-                <DataGridTextColumn Header="" Width="" Binding="{Binding Path=}"></DataGridTextColumn>
-                <DataGridTextColumn Header="" Width="" Binding="{Binding Path=}"></DataGridTextColumn>
-                <DataGridTextColumn Header="" Width="" Binding="{Binding Path=}"></DataGridTextColumn>
-                <DataGridTextColumn Header="" Width="" Binding="{Binding Path=}"></DataGridTextColumn>
-                <DataGridTextColumn Header="" Width="" Binding="{Binding Path=}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Викладач" Width="150" Binding="{Binding Path=TeacherInfo.Initials}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дисц." Width="60" Binding="{Binding Path=Subject.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Лек.Б" Width="40" Binding="{Binding Path=LectionB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Лек.К" Width="40" Binding="{Binding Path=SubjectInfoK.LectionK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Пр.Б" Width="40" Binding="{Binding Path=SubjectInfoB.PracticeB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Пр.К" Width="40" Binding="{Binding Path=SubjectInfoK.PracticeK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Лаб.Б" Width="45" Binding="{Binding Path=SubjectInfoB.LabB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Лаб.К" Width="43" Binding="{Binding Path=SubjectInfoK.LabK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Екз.Б" Width="43" Binding="{Binding Path=SubjectInfoB.ExamB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Екз.К" Width="50" Binding="{Binding Path=SubjectInfoK.ExamK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Зл.Б" Width="40" Binding="{Binding Path=SubjectInfoB.CreditB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Зл.К" Width="40" Binding="{Binding Path=SubjectInfoK.CreditK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кр.Р.Б" Width="50" Binding="{Binding Path=SubjectInfoB.TestB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кр.Р.К" Width="50" Binding="{Binding Path=SubjectInfoK.TestK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Курс.П.Б" Width="60" Binding="{Binding Path=SubjectInfoB.CourseProjectB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Курс.П.К" Width="60" Binding="{Binding Path=SubjectInfoK.CourseProjectK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Курс.Р.Б" Width="60" Binding="{Binding Path=SubjectInfoB.CourseWorkB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Курс.Р.К" Width="60" Binding="{Binding Path=SubjectInfoK.CourseWorkK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="РГР.РР.Б" Width="55" Binding="{Binding Path=SubjectInfoB.RgrB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="РГР.РР.К" Width="55" Binding="{Binding Path=SubjectInfoK.RgrK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ДКР.Б" Width="45" Binding="{Binding Path=SubjectInfoB.DkrB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ДКР.К" Width="45" Binding="{Binding Path=SubjectInfoK.DkrK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Реф.Б" Width="42" Binding="{Binding Path=SubjectInfoB.SummeryB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Реф.К" Width="42" Binding="{Binding Path=SubjectInfoK.SummeryK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Консл.Б" Width="55" Binding="{Binding Path=SubjectInfoB.СonsultationB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Консл.К" Width="55" Binding="{Binding Path=SubjectInfoK.СonsultationK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Всього.Б" Width="60" Binding="{Binding Path=SubjectInfoB.TotalHoursB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Всього.К" Width="60" Binding="{Binding Path=SubjectInfoK.TotalHoursK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Всього" Width="55" Binding="{Binding Path=TotalHours}"></DataGridTextColumn>
             </DataGrid.Columns>
             </DataGrid>
         <Button Name="AddButton" Content="Додати" Click="AddButton_OnClick" HorizontalAlignment="Left" Margin="10,425,0,0" VerticalAlignment="Top" Width="75"/>
