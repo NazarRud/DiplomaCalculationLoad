@@ -13,8 +13,6 @@
                 <DataGridTextColumn Header="" Width="" Binding="{Binding Path=}"></DataGridTextColumn>
                 <DataGridTextColumn Header="" Width="" Binding="{Binding Path=}"></DataGridTextColumn>
                 <DataGridTextColumn Header="" Width="" Binding="{Binding Path=}"></DataGridTextColumn>
-
-
             </DataGrid.Columns>
             </DataGrid>
         <Button Name="AddButton" Content="Додати" HorizontalAlignment="Left" Margin="10,425,0,0" VerticalAlignment="Top" Width="75"/>

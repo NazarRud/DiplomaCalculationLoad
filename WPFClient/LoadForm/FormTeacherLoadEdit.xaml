@@ -1,8 +1,70 @@
 ﻿<Window x:Class="WPFClient.LoadForm.FormTeacherLoadEdit"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Редагування навантаження на викладача" Height="300" Width="300">
+        Title="Редагування навантаження на викладача" ResizeMode="CanMinimize" Height="523.698" Width="1051.699">
     <Grid>
-        
+        <Label Content="Дисципліна" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="ComboBoxSubject" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="200"/>
+        <Label Content="Викладач" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="ComboBoxTeacher" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Width="200"/>
+        <ListBox Name="TeacherListBox" HorizontalAlignment="Left" Height="104" Margin="10,116,0,0" VerticalAlignment="Top" Width="200"/>
+        <Button Name="CalculateButton" Content="Розрахувати" HorizontalAlignment="Left" Margin="10,225,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button Name="ClearListBoxButton" Content="Очистити" HorizontalAlignment="Left" Margin="135,225,0,0" VerticalAlignment="Top" Width="75"/>
+        <DataGrid Name="DataGridSubjectBudget" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" HorizontalAlignment="Left" Margin="215,36,0,0" VerticalAlignment="Top" Height="90" Width="809">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Лекції" Width="50" Binding="{Binding Path=SubjectInfoB.LectionB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Практ." Width="50" Binding="{Binding Path=SubjectInfoB.PracticeB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Лаб." Width="50" Binding="{Binding Path=SubjectInfoB.LabB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Екзам." Width="50" Binding="{Binding Path=SubjectInfoB.ExamB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Заліки" Width="50" Binding="{Binding Path=SubjectInfoB.CreditB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Контр. Роб." Width="80" Binding="{Binding Path=SubjectInfoB.TestB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Курс. Пр." Width="70" Binding="{Binding Path=SubjectInfoB.CourseProjectB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Курс. Роб." Width="70" Binding="{Binding Path=SubjectInfoB.CourseWorkB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="РГР, РР, ГР" Width="75" Binding="{Binding Path=SubjectInfoB.RgrB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ДКР" Width="50" Binding="{Binding Path=SubjectInfoB.DkrB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Рефер." Width="55" Binding="{Binding Path=SubjectInfoB.SummeryB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Консулт." Width="65" Binding="{Binding Path=SubjectInfoB.СonsultationB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Всього год." Width="80" Binding="{Binding Path=SubjectInfoB.TotalHoursB}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Бюджет" HorizontalAlignment="Left" Margin="215,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Контракт" HorizontalAlignment="Left" Margin="215,131,0,0" VerticalAlignment="Top"/>
+        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" HorizontalAlignment="Left" Margin="215,155,0,0" VerticalAlignment="Top" Height="90" Width="809">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Лекції" Width="50" Binding="{Binding Path=SubjectInfoK.LectionK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Практ." Width="50" Binding="{Binding Path=SubjectInfoK.PracticeK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Лаб." Width="50" Binding="{Binding Path=SubjectInfoK.LabK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Екзам." Width="50" Binding="{Binding Path=SubjectInfoK.ExamK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Заліки" Width="50" Binding="{Binding Path=SubjectInfoK.CreditK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Контр. Роб." Width="80" Binding="{Binding Path=SubjectInfoK.TestK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Курс. Пр." Width="70" Binding="{Binding Path=SubjectInfoK.CourseProjectK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Курс. Роб." Width="70" Binding="{Binding Path=SubjectInfoK.CourseWorkK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="РГР, РР, ГР" Width="75" Binding="{Binding Path=SubjectInfoK.RgrK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ДКР" Width="50" Binding="{Binding Path=SubjectInfoK.DkrK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Рефер." Width="55" Binding="{Binding Path=SubjectInfoK.SummeryK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Консулт." Width="65" Binding="{Binding Path=SubjectInfoK.СonsultationK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Всього год." Width="80" Binding="{Binding Path=SubjectInfoK.TotalHoursK}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" HorizontalAlignment="Left" Margin="10,250,0,0" VerticalAlignment="Top" Height="200" Width="1014">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Лекції" Width="50" Binding="{Binding Path=SubjectInfoB.LectionB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Практ." Width="50" Binding="{Binding Path=SubjectInfoB.PracticeB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Лаб." Width="50" Binding="{Binding Path=SubjectInfoB.LabB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Екзам." Width="50" Binding="{Binding Path=SubjectInfoB.ExamB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Заліки" Width="50" Binding="{Binding Path=SubjectInfoB.CreditB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Контр. Роб." Width="80" Binding="{Binding Path=SubjectInfoB.TestB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Курс. Пр." Width="70" Binding="{Binding Path=SubjectInfoB.CourseProjectB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Курс. Роб." Width="70" Binding="{Binding Path=SubjectInfoB.CourseWorkB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="РГР, РР, ГР" Width="75" Binding="{Binding Path=SubjectInfoB.RgrB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ДКР" Width="50" Binding="{Binding Path=SubjectInfoB.DkrB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Рефер." Width="55" Binding="{Binding Path=SubjectInfoB.SummeryB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Консулт." Width="65" Binding="{Binding Path=SubjectInfoB.СonsultationB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Всього год." Width="80" Binding="{Binding Path=SubjectInfoB.TotalHoursB}"></DataGridTextColumn>
+            </DataGrid.Columns>
+            </DataGrid>
+        <Button Name="SaveButton" Content="Зберегти" HorizontalAlignment="Left" Margin="10,455,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="ClearDataGridTeacherLoadButton" Content="Очистити" HorizontalAlignment="Left" Margin="949,455,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="CancleButton" Content="Скасувати" HorizontalAlignment="Left" Margin="90,455,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>
