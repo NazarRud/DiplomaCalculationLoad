@@ -19,6 +19,7 @@ namespace Data.Entity
         public int CountSubGroupBudget { get; set; }
         public int CountSubGroupContract { get; set; }
         public EducationType EduType { get; set; }
+        public EducationForm EduForm { get; set; }
 
         public virtual ICollection<Subject> Subject { get; set; }
         public virtual ICollection<SubGroup> SubGroup { get; set; }

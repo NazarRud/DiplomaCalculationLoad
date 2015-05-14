@@ -36,6 +36,7 @@ namespace WPFClient.EduInfoForm.ContingentForm
         {
             DataGridGroup.ItemsSource = _uow.Group.All.ToList();
             ComboBoxEduType.ItemsSource = Enum.GetValues(typeof (EducationType)).Cast<EducationType>();
+            ComboBoxEduForm.ItemsSource = Enum.GetValues(typeof (EducationForm)).Cast<EducationForm>();
 
             if (Flow != null)
             {
@@ -48,6 +49,7 @@ namespace WPFClient.EduInfoForm.ContingentForm
                 TextBoxCountSubGroupContract.Text = Convert.ToString(Flow.CountSubGroupContract);
                 TextBoxTotalStudentFlow.Text = Convert.ToString(Convert.ToInt32(TextBoxAllCountBudget.Text) + Convert.ToInt32(TextBoxAllCountContract.Text));
                 ComboBoxEduType.Text = Flow.EduType.ToString();
+                ComboBoxEduForm.Text = Flow.EduForm.ToString();
             }
         }
 
@@ -64,6 +66,7 @@ namespace WPFClient.EduInfoForm.ContingentForm
             Flow.Group = ListBoxGroup.ItemsSource as ICollection<Group>;
             Flow.SubGroup = DataGridSubGroup.ItemsSource as ICollection<SubGroup>;
             Flow.EduType = ComboBoxEduType.SelectedItem is EducationType ? (EducationType) ComboBoxEduType.SelectedItem : (EducationType) 0;
+            Flow.EduForm = ComboBoxEduForm.SelectedItem is EducationForm? (EducationForm) ComboBoxEduForm.SelectedItem : (EducationForm) 0;
 
             if (Flow.Name == String.Empty || Flow.AllCountBudget < 0 || Flow.AllCountContract < 0 || Flow.CountSubGroupBudget < 0 || Flow.CountSubGroupContract < 0 || Flow.Group == null)
             {
