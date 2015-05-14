@@ -15,9 +15,9 @@
                 <DataGridTextColumn Header="" Width="" Binding="{Binding Path=}"></DataGridTextColumn>
             </DataGrid.Columns>
             </DataGrid>
-        <Button Name="AddButton" Content="Додати" HorizontalAlignment="Left" Margin="10,425,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Name="EditButton" Content="Редагувати" HorizontalAlignment="Left" Margin="90,425,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Name="DeleteButton" Content="Видалити" HorizontalAlignment="Left" Margin="170,425,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="AddButton" Content="Додати" Click="AddButton_OnClick" HorizontalAlignment="Left" Margin="10,425,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="EditButton" Content="Редагувати" Click="EditButton_OnClick" HorizontalAlignment="Left" Margin="90,425,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="DeleteButton" Content="Видалити" Click="DeleteButton_OnClick" HorizontalAlignment="Left" Margin="170,425,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>

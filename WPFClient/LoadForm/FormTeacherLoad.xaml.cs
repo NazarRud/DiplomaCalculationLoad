@@ -20,5 +20,17 @@ namespace WPFClient.LoadForm
         {
 
         }
+
+        private void AddButton_OnClick(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void EditButton_OnClick(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }
