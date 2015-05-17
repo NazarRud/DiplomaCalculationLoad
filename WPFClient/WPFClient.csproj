@@ -61,14 +61,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ReportsForm\FormK2Report.xaml.cs">
-      <DependentUpon>FormK2Report.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ReportsForm\FormK4Report.xaml.cs">
-      <DependentUpon>FormK4Report.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ReportsForm\FormK5Report.xaml.cs">
-      <DependentUpon>FormK5Report.xaml</DependentUpon>
+    <Compile Include="ReportsForm\FormReportsAll.xaml.cs">
+      <DependentUpon>FormReportsAll.xaml</DependentUpon>
     </Compile>
     <Page Include="EduInfoForm\AboutInfoForm\FormCathedra.xaml">
       <SubType>Designer</SubType>
@@ -208,15 +202,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ReportsForm\FormK2Report.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ReportsForm\FormK4Report.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ReportsForm\FormK5Report.xaml">
+    <Page Include="ReportsForm\FormReportsAll.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
