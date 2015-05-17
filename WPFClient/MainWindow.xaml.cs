@@ -69,22 +69,12 @@ namespace WPFClient
         {
         }
 
-        private void FormK2Report_MenuItem_Click(object sender, RoutedEventArgs e)
+        private void Reports_MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            FormK2Report formK2Report = new FormK2Report();
-            formK2Report.ShowDialog();
+            var reportsAll = new FormReportsAll();
+            reportsAll.ShowDialog();
         }
 
-        private void FormK4Report_MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            FormK4Report formK4Report = new FormK4Report();
-            formK4Report.ShowDialog();
-        }
 
-        private void FormK5Report_MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            FormK5Report formK5Report = new FormK5Report();
-            formK5Report.ShowDialog();
-        }
     }
 }
