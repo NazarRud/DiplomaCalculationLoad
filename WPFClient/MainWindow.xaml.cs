@@ -67,6 +67,8 @@ namespace WPFClient
 
         private void FormTeacherLoad_MenuItem_Click(object sender, RoutedEventArgs e)
         {
+            FormTeacherLoad formTeacherLoad = new FormTeacherLoad();
+            formTeacherLoad.ShowDialog();
         }
 
         private void Reports_MenuItem_Click(object sender, RoutedEventArgs e)

@@ -6,9 +6,9 @@
         <Label Content="Дисципліна" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <ComboBox Name="ComboBoxSubject" SelectionChanged="ComboBoxSubject_OnSelectionChanged" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="344"/>
         <Label Content="Викладач" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top"/>
-        <ComboBox Name="ComboBoxTeacher" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Width="344"/>
+        <ComboBox Name="ComboBoxTeacher" SelectionChanged="ComboBoxTeacher_OnSelectionChanged" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Width="344"/>
         <ListBox Name="TeacherListBox" HorizontalAlignment="Left" Height="104" Margin="10,116,0,0" VerticalAlignment="Top" Width="344"/>
-        <Button Name="CalculateButton" Content="Розрахувати" HorizontalAlignment="Left" Margin="10,225,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button Name="CalculateButton" Click="CalculateButton_OnClick" Content="Розрахувати" HorizontalAlignment="Left" Margin="10,225,0,0" VerticalAlignment="Top" Width="90"/>
         <Button Name="ClearListBoxButton" Content="Очистити" HorizontalAlignment="Left" Margin="279,225,0,0" VerticalAlignment="Top" Width="75"/>
         <DataGrid Name="DataGridSubjectBudget" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" HorizontalAlignment="Left" Margin="758,34,0,0" VerticalAlignment="Top" Height="90" Width="809">
             <DataGrid.Columns>
@@ -29,7 +29,7 @@
         </DataGrid>
         <Label Content="Бюджет" HorizontalAlignment="Left" Margin="758,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Контракт" HorizontalAlignment="Left" Margin="758,129,0,0" VerticalAlignment="Top"/>
-        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" HorizontalAlignment="Left" Margin="758,155,0,0" VerticalAlignment="Top" Height="90" Width="809">
+        <DataGrid  Name="DataGridSubjectContract" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" HorizontalAlignment="Left" Margin="758,155,0,0" VerticalAlignment="Top" Height="90" Width="809">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Лекції" Width="50" Binding="{Binding Path=SubjectInfoK.LectionK}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Практ." Width="50" Binding="{Binding Path=SubjectInfoK.PracticeK}"></DataGridTextColumn>
@@ -86,8 +86,8 @@
         <DataGrid Name="DataGridFlow" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" HorizontalAlignment="Left" Margin="359,34,0,0" VerticalAlignment="Top" Height="211" Width="394">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Назва потоку" Width="250" Binding="{Binding Path=Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Бюджет" Width="65" Binding="{Binding Path=Subject.Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Контракт" Width="65" Binding="{Binding Path=Subject.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Бюджет" Width="65" Binding="{Binding Path=AllCountBudget}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Контракт" Width="65" Binding="{Binding Path=AllCountContract}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

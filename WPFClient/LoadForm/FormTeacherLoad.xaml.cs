@@ -48,7 +48,7 @@ namespace WPFClient.LoadForm
                 MessageBox.Show("Виберіть рядок для редагування !");
                 return;
             }
-            var editedItem = _uow.TeacherLoad.Find(selected.Id);
+            var editedItem = _uow.TeacherLoad.Find(selected.Id).Subject;
 
             FormTeacherLoadEdit formTeacherLoadEdit = new FormTeacherLoadEdit(editedItem);
             if (formTeacherLoadEdit.ShowDialog() == true)
