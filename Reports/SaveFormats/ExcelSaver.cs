@@ -10,7 +10,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Reports.SaveFormats
 {
-    public class ExcelSaver : Saver
+    class ExcelSaver : Saver
     {
         private ExcelSaver()
         {

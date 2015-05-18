@@ -13,7 +13,7 @@ using MigraDoc.DocumentObjectModel.Tables;
 
 namespace Reports.SaveFormats
 {
-    public class PDFSaver : Saver
+    class PDFSaver : Saver
     {
         
         private PDFSaver()
