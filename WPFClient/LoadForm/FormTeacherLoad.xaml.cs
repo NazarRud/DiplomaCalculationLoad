@@ -1,5 +1,7 @@
 ﻿using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
+using Data.Entity;
 using Data.Repository;
 
 namespace WPFClient.LoadForm
@@ -30,16 +32,58 @@ namespace WPFClient.LoadForm
                 _uow.TeacherLoad.InsertOrUpdate(formTeacherLoadEdit.TeacherLoad);
                 _uow.Save();
             }
+            else
+            {
+                formTeacherLoadEdit.Close();
+            }
 
             DataGridTeacherLoad.ItemsSource = _uow.TeacherLoad.All.ToList();
         }
 
         private void EditButton_OnClick(object sender, RoutedEventArgs e)
         {
+            var selected = DataGridTeacherLoad.SelectedItem as TeacherLoad;
+            if (selected == null)
+            {
+                MessageBox.Show("Виберіть рядок для редагування !");
+                return;
+            }
+            var editedItem = _uow.TeacherLoad.Find(selected.Id);
+
+            FormTeacherLoadEdit formTeacherLoadEdit = new FormTeacherLoadEdit(editedItem);
+            if (formTeacherLoadEdit.ShowDialog() == true)
+            {
+                _uow.TeacherLoad.InsertOrUpdate(formTeacherLoadEdit.TeacherLoad);
+                _uow.Save();
+            }
+            else
+            {
+                formTeacherLoadEdit.Close();
+            }
+
+            DataGridTeacherLoad.ItemsSource = _uow.TeacherLoad.All.ToList();
         }
 
         private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
         {
+            var selected = DataGridTeacherLoad.SelectedItem as TeacherLoad;
+            if (selected == null)
+            {
+                MessageBox.Show("Виберіть рядок для видалення !");
+                return;
+            }
+            _uow.TeacherLoad.Delete(selected.Id);
+            _uow.Save();
+
+            DataGridTeacherLoad.ItemsSource = _uow.TeacherLoad.All.ToList();
+        }
+
+        private void ComboBoxsubject_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selected = ComboBoxsubject.SelectedItem as Subject;
+            if(selected == null) return;
+            var findSubject = _uow.Subject.Find(selected.Id);
+            DataGridTeacherLoad.ItemsSource = findSubject.TeacherLoad.ToList();
         }
     }
 }

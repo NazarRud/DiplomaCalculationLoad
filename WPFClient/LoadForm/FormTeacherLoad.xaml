@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Навантаження на викладача" ResizeMode="CanMinimize" Height="493.585" Width="970.189" Loaded="FormTeacherLoad_OnLoaded">
     <Grid>
-        <DataGrid Name="DataGridTeacherLoad" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="410" Width="934">
+        <DataGrid Name="DataGridTeacherLoad" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Height="357" Width="934">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Викладач" Width="150" Binding="{Binding Path=TeacherInfo.Initials}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Дисц." Width="60" Binding="{Binding Path=Subject.Name}"></DataGridTextColumn>
@@ -35,10 +35,12 @@
                 <DataGridTextColumn Header="Всього.К" Width="60" Binding="{Binding Path=SubjectInfoK.TotalHoursK}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Всього" Width="55" Binding="{Binding Path=TotalHours}"></DataGridTextColumn>
             </DataGrid.Columns>
-            </DataGrid>
+        </DataGrid>
         <Button Name="AddButton" Content="Додати" Click="AddButton_OnClick" HorizontalAlignment="Left" Margin="10,425,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Name="EditButton" Content="Редагувати" Click="EditButton_OnClick" HorizontalAlignment="Left" Margin="90,425,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Name="DeleteButton" Content="Видалити" Click="DeleteButton_OnClick" HorizontalAlignment="Left" Margin="170,425,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Дисципліна" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="325"/>
 
     </Grid>
 </Window>
