@@ -13,7 +13,7 @@ using MigraDoc.DocumentObjectModel.Shapes;
 
 namespace Reports.ReportPages
 {
-    public class PlanAllOnlyTotalResultsBuilderPDF : PDFPageBuilder
+    class PlanAllOnlyTotalResultsBuilderPDF : PDFPageBuilder
     {
         public override void CreateAdditionalElement()
         {

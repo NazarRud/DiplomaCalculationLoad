@@ -13,7 +13,7 @@ using MigraDoc.DocumentObjectModel.Tables;
 
 namespace Reports.ReportPages
 {
-    public class K2Page8BuilderPDF : PDFPageBuilder
+    class K2Page8BuilderPDF : PDFPageBuilder
     {
         public override void CreateHeader()
         {

@@ -15,7 +15,7 @@ using System.IO;
 
 namespace Reports.ReportPages
 {
-    public class PlanAllDisciplineBuilderPDF : PDFPageBuilder
+    class PlanAllDisciplineBuilderPDF : PDFPageBuilder
     {
         private int availableRows = 30;
         List<FakeData> fakeData = FakeData.GetFakeData();
