@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Reports.ReportType
 {
-    public class K5Report : Report
+    class K5Report : Report
     {
         private K5Report()
         {
