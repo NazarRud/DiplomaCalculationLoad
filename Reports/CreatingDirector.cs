@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Reports
 {
-    public class CreatingDirector
+    class CreatingDirector
     {
         private PDFPageBuilder ppb;
         private ExcelPageBuilder epb;

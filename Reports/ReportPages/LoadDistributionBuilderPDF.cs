@@ -12,8 +12,17 @@ using MigraDoc.DocumentObjectModel.Tables;
 
 namespace Reports.ReportPages
 {
-    public class LoadDistributionBuilderPDF : PDFPageBuilder
+    class LoadDistributionBuilderPDF : PDFPageBuilder
     {
+        public string Discipline { get; private set; }
+        private LoadDistributionBuilderPDF()
+        {
+        }
+
+        public LoadDistributionBuilderPDF(string discipline)
+        {
+            Discipline = discipline;
+        }
         public override void CreateHeader()
         {
             table.Borders.Width = 0.2;
@@ -48,7 +57,7 @@ namespace Reports.ReportPages
             row.Borders.Bottom.Width = 0.7;
             row.Borders.Bottom.Color = Colors.Blue;
             cell = row.Cells[0];
-            cell.AddParagraph("Іспити").Format.Alignment = ParagraphAlignment.Center;
+            cell.AddParagraph(Discipline).Format.Alignment = ParagraphAlignment.Center;
             cell.Format.Font.Bold = true;
             cell.MergeRight = 6;
 

@@ -13,10 +13,10 @@ using MigraDoc.DocumentObjectModel.Tables;
 
 namespace Reports
 {
-    public abstract class Saver
+    abstract class Saver
     {
         protected string fileName;
         public virtual void SaveDocument(object[] document) { }
-        public virtual void SaveDocument(Document document){}
+        public virtual void SaveDocument(Document document) { }
     }
 }

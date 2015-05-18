@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Reports.ReportType
 {
-    public class OtherReport : Report
+    class OtherReport : Report
     {
         private OtherReport()
         {

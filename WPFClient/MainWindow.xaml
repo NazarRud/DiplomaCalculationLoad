@@ -1,7 +1,8 @@
 ﻿<Window x:Class="WPFClient.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Головна" Height="572" Width="908" ResizeMode="CanMinimize">
+        Title="Головна" Height="572" Width="908" ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Menu Height="25" VerticalAlignment="Top" Width="Auto" Name="CalculationMenu" Margin="0,0,0,0" >
             <MenuItem Header="Навчально-методична інформація" Width="Auto" Height="25">
@@ -21,13 +22,7 @@
                 <MenuItem Header="Дисципліна Контракт" HorizontalAlignment="Stretch" Width="Auto" Click="FormSubjectInfoK_MenuItem_Click"/>
                 <MenuItem Header="Викладач" HorizontalAlignment="Stretch" Width="Auto" Click="FormTeacherLoad_MenuItem_Click"/>
             </MenuItem>
-            <MenuItem Header="Звіти">
-                <MenuItem Header="К2 (Інд. план)" HorizontalAlignment="Stretch" Width="Auto" Click="FormK2Report_MenuItem_Click"/>
-                <MenuItem Header="К4 (По семестрам)" HorizontalAlignment="Stretch" Width="Auto" Click="FormK4Report_MenuItem_Click"></MenuItem>
-                <MenuItem Header="К5" HorizontalAlignment="Stretch" Width="Auto" Click="FormK5Report_MenuItem_Click"></MenuItem>
-                <MenuItem Header="Підсумки по викладачу" HorizontalAlignment="Stretch" Width="Auto"></MenuItem>
-                <MenuItem Header="Різні види навч. робіт" HorizontalAlignment="Stretch" Width="Auto"></MenuItem>
-                <MenuItem Header="Пед. нав. в розрізі дисциплін" HorizontalAlignment="Stretch" Width="Auto"></MenuItem>
+            <MenuItem Header="Звіти" Width="auto" Height="25" Click="Reports_MenuItem_Click">
             </MenuItem>
         </Menu>
     </Grid>

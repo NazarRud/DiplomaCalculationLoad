@@ -9,7 +9,7 @@ using System.IO;
 
 namespace Reports.ReportPages
 {
-    public class K5BudgetBuilderExcel : ExcelPageBuilder
+    class K5BudgetBuilderExcel : ExcelPageBuilder
     {
         public override void CreateTemplate()
         {

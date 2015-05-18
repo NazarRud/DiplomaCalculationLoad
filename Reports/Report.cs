@@ -13,7 +13,7 @@ using MigraDoc.DocumentObjectModel.Tables;
 
 namespace Reports
 {
-    public abstract class Report
+    abstract class Report
     {
         protected Saver saver = null;
         protected PDFPageBuilder pdfBuilder = null;

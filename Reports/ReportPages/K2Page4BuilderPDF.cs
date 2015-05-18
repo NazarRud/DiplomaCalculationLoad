@@ -14,7 +14,7 @@ using MigraDoc.DocumentObjectModel.Shapes;
 
 namespace Reports.ReportPages
 {
-    public class K2Page4BuilderPDF : PDFPageBuilder
+    class K2Page4BuilderPDF : PDFPageBuilder
     {
         public override void CreateHeader()
         {
