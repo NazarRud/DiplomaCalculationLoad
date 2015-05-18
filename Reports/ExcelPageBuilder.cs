@@ -9,7 +9,7 @@ using System.IO;
 
 namespace Reports
 {
-    public abstract class ExcelPageBuilder
+    abstract class ExcelPageBuilder
     {
         protected byte[] file;
         public Excel.Application App { get; protected set; }

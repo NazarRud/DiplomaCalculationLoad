@@ -14,7 +14,7 @@ using MigraDoc.DocumentObjectModel.Shapes;
 
 namespace Reports
 {
-    public abstract class PDFPageBuilder
+    abstract class PDFPageBuilder
     {
         protected Document document;
         protected Section section;
