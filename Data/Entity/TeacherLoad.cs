@@ -4,10 +4,6 @@ namespace Data.Entity
 {
     public class TeacherLoad
     {
-        public TeacherLoad()
-        {
-            this.TeacherInfo = new HashSet<TeacherInfo>();
-        }
         public int Id { get; set; }
         public int LectionB { get; set; }
         public int LectionK { get; set; }
@@ -37,6 +33,6 @@ namespace Data.Entity
         public double TotalHoursK { get; set; }
         public double TotalHourse { get; set; }
         public virtual Subject Subject { get; set; }
-        public virtual ICollection<TeacherInfo> TeacherInfo { get; set; }
+        public virtual TeacherInfo TeacherInfo { get; set; }
     }
 }

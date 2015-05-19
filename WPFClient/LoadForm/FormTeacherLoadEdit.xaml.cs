@@ -18,7 +18,7 @@ namespace WPFClient.LoadForm
         private readonly App _app = Application.Current as App;
         public TeacherLoad TeacherLoad { get; set; }
         public Subject Subject { get; set; }
-        private List<TeacherInfo> _listTeacherInfos;
+        private readonly List<TeacherInfo> _listTeacherInfos;
 
         public FormTeacherLoadEdit()
         {
@@ -73,6 +73,7 @@ namespace WPFClient.LoadForm
         {
             var subjectBudget = new SubjectInfoB();
             var subjectContract = new SubjectInfoK();
+            var listTeacherLoad = new List<TeacherLoad>();
 
             var sBiEnum = DataGridSubjectBudget.ItemsSource as IEnumerable<SubjectInfoB>;
             var sCiEnum = DataGridSubjectContract.ItemsSource as IEnumerable<SubjectInfoK>;
@@ -88,47 +89,54 @@ namespace WPFClient.LoadForm
                 {
                     subjectContract = infoC;
                 }
-            }         
-
+            }
+            //var totalHoursB = subjectBudget.TotalHoursB;
+            //var totalHourseK = subjectContract.TotalHoursK;
             var subject = ComboBoxSubject.SelectedItem as Subject;
 
-            var teacherInfo = _listTeacherInfos;
             var count = _listTeacherInfos.Count;
 
-            TeacherLoad teacherLoad = new TeacherLoad
+            for (int i = 0; i < count; i++)
             {
-                LectionB = subjectBudget.LectionB / count,
-                LectionK = subjectContract.LectionK / count,
-                PracticeB = subjectBudget.PracticeB / count,
-                PracticeK = subjectContract.PracticeK / count,
-                LabB = subjectBudget.LabB / count,
-                LabK = subjectContract.LabK / count,
-                ExamB = subjectBudget.ExamB / count,
-                ExamK = subjectContract.ExamK / count,
-                CreditB = subjectBudget.CreditB / count,
-                CreditK = subjectContract.CreditK / count,
-                TestB = subjectBudget.TestB / count,
-                TestK = subjectContract.TestK / count,
-                CourseProjectB = subjectBudget.CourseProjectB / count,
-                CourseProjectK = subjectContract.CourseProjectK / count,
-                CourseWorkB = subjectBudget.CourseWorkB / count,
-                CourseWorkK = subjectContract.CourseWorkK / count,
-                RgrB = subjectBudget.RgrB / count,
-                RgrK = subjectContract.RgrK / count,
-                DkrB = subjectBudget.DkrB / count,
-                DkrK = subjectContract.DkrK / count,
-                SummeryB = subjectBudget.SummeryB / count,
-                SummeryK = subjectContract.SummeryK / count,
-                СonsultationB = subjectBudget.СonsultationB / count,
-                СonsultationK = subjectContract.СonsultationK / count,
-                TotalHoursB = subjectBudget.TotalHoursB / count,
-                TotalHoursK = subjectContract.TotalHoursK / count,
-                TotalHourse = (subjectBudget.TotalHoursB + subjectContract.TotalHoursK) / count,
-                Subject = subject,
-                TeacherInfo = teacherInfo
-            };
+                var teacherLoad = new TeacherLoad
+                {
+                    LectionB = subjectBudget.LectionB / count,
+                    LectionK = subjectContract.LectionK / count,
+                    PracticeB = subjectBudget.PracticeB / count,
+                    PracticeK = subjectContract.PracticeK / count,
+                    LabB = subjectBudget.LabB / count,
+                    LabK = subjectContract.LabK / count,
+                    ExamB = subjectBudget.ExamB / count,
+                    ExamK = subjectContract.ExamK / count,
+                    CreditB = subjectBudget.CreditB / count,
+                    CreditK = subjectContract.CreditK / count,
+                    TestB = subjectBudget.TestB / count,
+                    TestK = subjectContract.TestK / count,
+                    CourseProjectB = subjectBudget.CourseProjectB / count,
+                    CourseProjectK = subjectContract.CourseProjectK / count,
+                    CourseWorkB = subjectBudget.CourseWorkB / count,
+                    CourseWorkK = subjectContract.CourseWorkK / count,
+                    RgrB = subjectBudget.RgrB / count,
+                    RgrK = subjectContract.RgrK / count,
+                    DkrB = subjectBudget.DkrB / count,
+                    DkrK = subjectContract.DkrK / count,
+                    SummeryB = subjectBudget.SummeryB / count,
+                    SummeryK = subjectContract.SummeryK / count,
+                    СonsultationB = subjectBudget.СonsultationB / count,
+                    СonsultationK = subjectContract.СonsultationK / count,
+                    TotalHoursB = subjectBudget.TotalHoursB / count,
+                    TotalHoursK = subjectContract.TotalHoursK / count,
+                    TotalHourse = (subjectBudget.TotalHoursB + subjectContract.TotalHoursK) / count,
+                    Subject = subject,
+                    TeacherInfo = _listTeacherInfos[i]
+                };
 
-            DataGridTeacherLoad.ItemsSource = new List<TeacherLoad> {teacherLoad};
+                listTeacherLoad.Add(teacherLoad);
+            }
+
+           
+
+            DataGridTeacherLoad.ItemsSource = listTeacherLoad;
         }
     }
 }

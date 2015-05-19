@@ -76,7 +76,7 @@
                 <DataGridTextColumn Header="Консл.К" Width="55" Binding="{Binding Path=СonsultationK}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Всього.Б" Width="60" Binding="{Binding Path=TotalHoursB}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Всього.К" Width="60" Binding="{Binding Path=TotalHoursK}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Всього" Width="55" Binding="{Binding Path=TotalHours}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Всього" Width="55" Binding="{Binding Path=TotalHourse}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Button Name="SaveButton" Content="Зберегти" HorizontalAlignment="Left" Margin="10,455,0,0" VerticalAlignment="Top" Width="75"/>
