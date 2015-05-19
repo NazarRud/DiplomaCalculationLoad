@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using Data.Entity;
 using Data.Repository;
 
@@ -45,14 +46,15 @@ namespace WPFClient.LoadForm
 
         private void ComboBoxSubject_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Subject = ComboBoxSubject.SelectedItem as Subject;
-            //if (selected == null) return;
+            var selected = ComboBoxSubject.SelectedItem as Subject;
+            if (selected == null) return;
 
-            //var findSubject = _uow.Subject.Find(selected.Id);
-            //DataGridTeacherLoad.ItemsSource = findSubject.TeacherLoad.ToList();
-            //DataGridFlow.ItemsSource = (IEnumerable)findSubject.Flow;
-            //DataGridSubjectBudget.ItemsSource = findSubject.SubjectInfoB as IEnumerable;
-            //DataGridSubjectContract.ItemsSource = findSubject.SubjectInfoK as IEnumerable;
+            var findSubject = _uow.Subject.Find(selected.Id);
+            DataGridTeacherLoad.ItemsSource = findSubject.TeacherLoad.ToList();
+
+            DataGridFlow.ItemsSource = new List<Flow> {findSubject.Flow};
+            DataGridSubjectBudget.ItemsSource = new List<SubjectInfoB> {findSubject.SubjectInfoB};
+            DataGridSubjectContract.ItemsSource = new List<SubjectInfoK> {findSubject.SubjectInfoK};
         }
 
         private void ComboBoxTeacher_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -69,13 +71,29 @@ namespace WPFClient.LoadForm
 
         private void CalculateButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var subjectBudget = Subject.SubjectInfoB; //DataGridSubjectBudget.ItemsSource as SubjectInfoB;
-            var subjectContract = Subject.SubjectInfoK; //DataGridSubjectContract.ItemsSource as SubjectInfoK;
-            var subject = Subject; //ComboBoxSubject.SelectedItem as Subject;
+            var subjectBudget = new SubjectInfoB();
+            var subjectContract = new SubjectInfoK();
+
+            var sBiEnum = DataGridSubjectBudget.ItemsSource as IEnumerable<SubjectInfoB>;
+            var sCiEnum = DataGridSubjectContract.ItemsSource as IEnumerable<SubjectInfoK>;
+
+            if (sBiEnum != null && sCiEnum != null)
+            {
+                foreach (var infoB in sBiEnum)
+                {
+                    subjectBudget = infoB;
+                }
+
+                foreach (var infoC in sCiEnum)
+                {
+                    subjectContract = infoC;
+                }
+            }         
+
+            var subject = ComboBoxSubject.SelectedItem as Subject;
+
             var teacherInfo = _listTeacherInfos;
             var count = _listTeacherInfos.Count;
-
-            List<TeacherLoad> teacherLoads = new List<TeacherLoad>();
 
             TeacherLoad teacherLoad = new TeacherLoad
             {
@@ -110,9 +128,7 @@ namespace WPFClient.LoadForm
                 TeacherInfo = teacherInfo
             };
 
-            teacherLoads.Add(teacherLoad);
-            DataGridTeacherLoad.ItemsSource = teacherLoads;
-            teacherLoads = null;
+            DataGridTeacherLoad.ItemsSource = new List<TeacherLoad> {teacherLoad};
         }
     }
 }
