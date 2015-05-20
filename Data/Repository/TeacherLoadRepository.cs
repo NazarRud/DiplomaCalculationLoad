@@ -35,8 +35,8 @@ namespace Data.Repository
 
         public void Delete(int id)
         {
-            var temp = _context.TeacherInfos.Find(id);
-            _context.TeacherInfos.Remove(temp);
+            var temp = _context.TeacherLoads.Find(id);
+            _context.TeacherLoads.Remove(temp);
         }
     }
 }

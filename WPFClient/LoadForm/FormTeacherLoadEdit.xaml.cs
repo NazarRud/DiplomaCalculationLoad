@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using Data.Entity;
 using Data.Repository;
 
@@ -16,8 +14,7 @@ namespace WPFClient.LoadForm
     {
         private readonly IUow _uow;
         private readonly App _app = Application.Current as App;
-        public TeacherLoad TeacherLoad { get; set; }
-        public Subject Subject { get; set; }
+        public List<TeacherLoad> ListTeacherLoads { get; set; }
         private readonly List<TeacherInfo> _listTeacherInfos;
 
         public FormTeacherLoadEdit()
@@ -27,9 +24,9 @@ namespace WPFClient.LoadForm
             InitializeComponent();
         }
 
-        public FormTeacherLoadEdit(Subject subject) : this()
+        public FormTeacherLoadEdit(List<TeacherLoad> teacherLoads) : this()
         {
-            Subject = subject;
+            ListTeacherLoads = teacherLoads;
         }
 
         private void FormTeacherLoadEdit_OnLoaded(object sender, RoutedEventArgs e)
@@ -39,8 +36,8 @@ namespace WPFClient.LoadForm
             ComboBoxTeacher.ItemsSource = _uow.TeacherInfo.All.ToList();
             ComboBoxTeacher.DisplayMemberPath = "Initials";
 
-            if (Subject != null)
-                DataGridTeacherLoad.ItemsSource = Subject.TeacherLoad.ToList();
+            if (ListTeacherLoads != null)
+                DataGridTeacherLoad.ItemsSource = ListTeacherLoads;
 
         }
 
@@ -90,8 +87,6 @@ namespace WPFClient.LoadForm
                     subjectContract = infoC;
                 }
             }
-            //var totalHoursB = subjectBudget.TotalHoursB;
-            //var totalHourseK = subjectContract.TotalHoursK;
             var subject = ComboBoxSubject.SelectedItem as Subject;
 
             var count = _listTeacherInfos.Count;
@@ -132,11 +127,56 @@ namespace WPFClient.LoadForm
                 };
 
                 listTeacherLoad.Add(teacherLoad);
-            }
-
-           
+            }        
 
             DataGridTeacherLoad.ItemsSource = listTeacherLoad;
+        }
+
+        private void SaveButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var gridTeacherLoad = DataGridTeacherLoad.ItemsSource as IEnumerable<TeacherLoad>;
+
+            if (ListTeacherLoads == null)
+                ListTeacherLoads = new List<TeacherLoad>();
+
+            if (gridTeacherLoad != null)
+                foreach (var item in gridTeacherLoad)
+                {
+                    TeacherLoad teacherLoad = item;
+                    ListTeacherLoads.Add(teacherLoad);
+                }
+
+            DialogResult = true;
+        }
+
+        private void CancleButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+        }
+
+        private void ClearDataGridTeacherLoadButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            DataGridTeacherLoad.ItemsSource = null;
+        }
+
+        private void CalculationHoursButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var tempList = new List<TeacherLoad>();
+            var listTeacherLoad = DataGridTeacherLoad.ItemsSource as List<TeacherLoad>;
+            if(listTeacherLoad != null)
+            foreach (var load in listTeacherLoad)
+            {
+                load.TotalHoursB = load.LectionB + load.PracticeB + load.LabB + load.ExamB + load.CreditB + load.TestB +
+                                   load.CourseProjectB + load.RgrB + load.DkrB + load.SummeryB + load.СonsultationB;
+                load.TotalHoursK = load.LectionK + load.PracticeK + load.LabB + load.ExamK + load.CreditB + load.TestK +
+                                   load.CourseProjectB + load.RgrK + load.DkrK + load.SummeryK + load.СonsultationB;
+
+                load.TotalHourse = load.TotalHoursB + load.TotalHoursK;
+
+                tempList.Add(load);
+            }
+
+            DataGridTeacherLoad.ItemsSource = tempList;
         }
     }
 }

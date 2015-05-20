@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Data.Entity;
@@ -21,6 +22,8 @@ namespace WPFClient.LoadForm
 
         private void FormTeacherLoad_OnLoaded(object sender, RoutedEventArgs e)
         {
+            ComboBoxSubject.ItemsSource = _uow.Subject.All.ToList();
+            ComboBoxSubject.DisplayMemberPath = "Name";
             DataGridTeacherLoad.ItemsSource = _uow.TeacherLoad.All.ToList();
         }
 
@@ -29,8 +32,11 @@ namespace WPFClient.LoadForm
             FormTeacherLoadEdit formTeacherLoadEdit = new FormTeacherLoadEdit();
             if (formTeacherLoadEdit.ShowDialog() == true)
             {
-                _uow.TeacherLoad.InsertOrUpdate(formTeacherLoadEdit.TeacherLoad);
-                _uow.Save();
+                foreach (var item in formTeacherLoadEdit.ListTeacherLoads)
+                {
+                    _uow.TeacherLoad.InsertOrUpdate(item);
+                    _uow.Save();
+                }             
             }
             else
             {
@@ -42,19 +48,21 @@ namespace WPFClient.LoadForm
 
         private void EditButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var selected = DataGridTeacherLoad.SelectedItem as TeacherLoad;
-            if (selected == null)
+            var listTeacherLoads = DataGridTeacherLoad.ItemsSource as List<TeacherLoad>;
+            if (ComboBoxSubject.SelectedItem == null)
             {
-                MessageBox.Show("Виберіть рядок для редагування !");
+                MessageBox.Show("Виберіть предмет для редагування !");
                 return;
             }
-            var editedItem = _uow.TeacherLoad.Find(selected.Id).Subject;
 
-            FormTeacherLoadEdit formTeacherLoadEdit = new FormTeacherLoadEdit(editedItem);
+            FormTeacherLoadEdit formTeacherLoadEdit = new FormTeacherLoadEdit(listTeacherLoads);
             if (formTeacherLoadEdit.ShowDialog() == true)
             {
-                _uow.TeacherLoad.InsertOrUpdate(formTeacherLoadEdit.TeacherLoad);
-                _uow.Save();
+                foreach (var item in formTeacherLoadEdit.ListTeacherLoads)
+                {
+                    _uow.TeacherLoad.InsertOrUpdate(item);
+                    _uow.Save();
+                }
             }
             else
             {
@@ -66,21 +74,30 @@ namespace WPFClient.LoadForm
 
         private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var selected = DataGridTeacherLoad.SelectedItem as TeacherLoad;
-            if (selected == null)
+            if (ComboBoxSubject.SelectedItem == null)
             {
-                MessageBox.Show("Виберіть рядок для видалення !");
+                MessageBox.Show("Виберіть дисципліну для видалення !");
                 return;
             }
-            _uow.TeacherLoad.Delete(selected.Id);
-            _uow.Save();
+
+            var selectedSubject = DataGridTeacherLoad.ItemsSource as List<TeacherLoad>;
+            if (selectedSubject == null)
+            {
+                MessageBox.Show("Виберіть дисципліну для видалення !");
+                return;
+            }
+            foreach (var teacherLoad in selectedSubject)
+            {
+                _uow.TeacherLoad.Delete(teacherLoad.Id);
+                _uow.Save();
+            }          
 
             DataGridTeacherLoad.ItemsSource = _uow.TeacherLoad.All.ToList();
         }
 
         private void ComboBoxsubject_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selected = ComboBoxsubject.SelectedItem as Subject;
+            var selected = ComboBoxSubject.SelectedItem as Subject;
             if(selected == null) return;
             var findSubject = _uow.Subject.Find(selected.Id);
             DataGridTeacherLoad.ItemsSource = findSubject.TeacherLoad.ToList();

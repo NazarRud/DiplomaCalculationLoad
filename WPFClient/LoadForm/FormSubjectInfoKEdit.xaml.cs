@@ -108,8 +108,6 @@ namespace WPFClient.LoadForm
 
         private void ButtonCalculate_OnClick(object sender, RoutedEventArgs e)
         {
-
-            int tempStudCountB = Convert.ToInt32(TextBoxStudCountB.Text);
             int tempStudCountK = Convert.ToInt32(TextBoxStudCountK.Text);
 
             int lectionV = 0;
@@ -120,23 +118,12 @@ namespace WPFClient.LoadForm
             int labV = Convert.ToInt32(TextBoxLabV.Text) * Convert.ToInt32(TextBoxSubGroupLab.Text);
             double examV = 0.33 * Convert.ToInt32(TextBoxExamV.Text) * tempStudCountK;
 
-            double creditV = 0;
+           
             int tempCreditV = Convert.ToInt32(TextBoxCreditV.Text);
-            int tempAcademB = Convert.ToInt32(TextBoxAcademB.Text);
             int tempAcademK = Convert.ToInt32(TextBoxAcademK.Text);
 
-            switch (tempCreditV)
-            {
-                case 1:
-                    double temp1 = tempAcademB * tempStudCountK;
-                    double temp2 = tempStudCountK + tempStudCountB;
-                    creditV = tempCreditV * 2 * (tempAcademK / temp1 / temp2);
-                    creditV = Math.Round(creditV, 2);
-                    break;
-                case 2:
-                    creditV = 0.25 * tempStudCountK;
-                    break;
-            }
+            double creditV = 2 * tempAcademK * tempCreditV;
+            creditV = Math.Round(creditV, 2);
 
             double testV = 0.25 * Convert.ToInt32(TextBoxTestV.Text) * tempStudCountK;
             int courseProjectV = Convert.ToInt32(TextBoxCourseProjectV.Text) * tempStudCountK;
@@ -144,7 +131,20 @@ namespace WPFClient.LoadForm
             double rgrV = 0.5 * Convert.ToInt32(TextBoxRgrV.Text) * tempStudCountK;
             double dkrV = 0.33 * Convert.ToInt32(TextBoxDkrV.Text) * tempStudCountK;
             double summeryV = 0.25 * Convert.ToInt32(TextBoxSummeryV.Text) * tempStudCountK;
-            double consultationV = 2 * Convert.ToInt32(TextBoxExamV.Text) * tempAcademK + 0.06 * Convert.ToInt32(TextBoxAmountHours.Text) * (tempStudCountK) / 25;
+
+            double consultationV = 0;
+            if (_selectedFlow.EduForm == EducationForm.Денна)
+            {
+                consultationV = 2 * Convert.ToInt32(TextBoxExamV.Text) * tempAcademK +
+                                0.06 * Convert.ToInt32(TextBoxAmountHours.Text) * (tempStudCountK) / 25;
+            }
+            else if(_selectedFlow.EduForm == EducationForm.Заочна)
+            {
+                consultationV = 2 * Convert.ToInt32(TextBoxExamV.Text) * tempAcademK +
+                0.12 * Convert.ToInt32(TextBoxAmountHours.Text) * (tempStudCountK) / 25;
+
+            } 
+            
             consultationV = Math.Round(consultationV, 2);
 
             TextBoxLectionK.Text = Convert.ToString(lectionV);
