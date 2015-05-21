@@ -61,7 +61,7 @@ namespace WPFClient.LoadForm
             int groupCountAcademK = _selectedFlow.Group.Count(g => g.EducationType == EducationType.Контракт);
             TextBoxAcademB.Text = Convert.ToString(groupCountAcademB);
             TextBoxAcademK.Text = Convert.ToString(groupCountAcademK);
-            TextBoxGroupPract.Text = Convert.ToString(groupCountAcademK);
+            TextBoxSubGroupPract.Text = Convert.ToString(_selectedFlow.CountSubGroupContract);
             TextBoxSubGroupLab.Text = Convert.ToString(_selectedFlow.CountSubGroupContract);
             TextBoxStudCountB.Text = Convert.ToString(_selectedFlow.AllCountBudget);
             TextBoxStudCountK.Text = Convert.ToString(_selectedFlow.AllCountContract);
@@ -114,7 +114,7 @@ namespace WPFClient.LoadForm
             if (_selectedFlow.EduType == EducationType.Контракт)
                 lectionV = Convert.ToInt32(TextBoxLectionV.Text);
 
-            int practiceV = Convert.ToInt32(TextBoxPracticeV.Text) * Convert.ToInt32(TextBoxGroupPract.Text);
+            int practiceV = Convert.ToInt32(TextBoxPracticeV.Text) * Convert.ToInt32(TextBoxSubGroupPract.Text);
             int labV = Convert.ToInt32(TextBoxLabV.Text) * Convert.ToInt32(TextBoxSubGroupLab.Text);
             double examV = 0.33 * Convert.ToInt32(TextBoxExamV.Text) * tempStudCountK;
 
