@@ -57,10 +57,13 @@
     <Compile Include="Entity\Enum\EducationType.cs" />
     <Compile Include="Entity\Enum\Rank.cs" />
     <Compile Include="Entity\Enum\Semestr.cs" />
+    <Compile Include="Entity\Enum\SubTypeWork.cs" />
+    <Compile Include="Entity\Enum\TypeWork.cs" />
     <Compile Include="Entity\Faculty.cs" />
     <Compile Include="Entity\Flow.cs" />
     <Compile Include="Entity\Group.cs" />
     <Compile Include="Entity\Enum\QualificationLevel.cs" />
+    <Compile Include="Entity\OtherType.cs" />
     <Compile Include="Entity\SubGroup.cs" />
     <Compile Include="Entity\Subject.cs" />
     <Compile Include="Entity\SubjectInfoB.cs" />
@@ -76,6 +79,7 @@
     <Compile Include="Repository\IFacultyRepository.cs" />
     <Compile Include="Repository\IFlowRepository.cs" />
     <Compile Include="Repository\IGroupRepository.cs" />
+    <Compile Include="Repository\IOtherTypeRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\ISubGroupRepository.cs" />
     <Compile Include="Repository\ISubject.cs" />
@@ -83,6 +87,7 @@
     <Compile Include="Repository\ITeacherInfoRepository.cs" />
     <Compile Include="Repository\ITeacherLoadRepository.cs" />
     <Compile Include="Repository\IUow.cs" />
+    <Compile Include="Repository\OtherTypeRepository.cs" />
     <Compile Include="Repository\SubGroupRepository.cs" />
     <Compile Include="Repository\SubjectInfoBRepository.cs" />
     <Compile Include="Repository\ISubjectInfoKRepository.cs" />

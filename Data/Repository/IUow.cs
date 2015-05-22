@@ -14,6 +14,7 @@ namespace Data.Repository
         ITeacherInfoRepository TeacherInfo { get; set; }
         ISubjectRepository Subject { get; set; }
         ITeacherLoadRepository TeacherLoad { get; set; }
+        IOtherTypeRepository OtherType { get; set; }
         void Save();
     }
 }

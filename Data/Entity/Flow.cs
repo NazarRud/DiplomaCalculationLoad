@@ -10,6 +10,7 @@ namespace Data.Entity
             this.Subject = new HashSet<Subject>();
             this.SubGroup = new HashSet<SubGroup>();
             this.Group = new HashSet<Group>();
+            this.OtherType = new HashSet<OtherType>();
         }
 
         public int Id { get; set; }
@@ -24,12 +25,6 @@ namespace Data.Entity
         public virtual ICollection<Subject> Subject { get; set; }
         public virtual ICollection<SubGroup> SubGroup { get; set; }
         public virtual ICollection<Group> Group { get; set; }
-
-        //public PracticeManagement PracticeManagement { get; set; }
-        //public FlowLoad FlowLoad { get; set; }
-        //public AttestationWorkConsultation AttestationWorkConsultation { get; set; }
-        //public Tutoring Tutoring { get; set; }
-        //public FlowDek FlowDek { get; set; }
-
+        public virtual ICollection<OtherType> OtherType { get; set; }
     }
 }

@@ -1,0 +1,23 @@
+﻿<Window x:Class="WPFClient.LoadForm.FormOtherType"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Інші види навчальної роботи кафедри" Height="468" Width="748" ResizeMode="CanMinimize" Loaded="FormOtherType_OnLoaded">
+    <Grid>
+        <DataGrid Name="DataGridOtherType" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="389" Width="715">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Вид роботи" Width="120" Binding="{Binding Path=TypeWork}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Під вид роботи" Width="120" Binding="{Binding Path=SubTypeWork}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Семестр" Width="60" Binding="{Binding Path=Semestr}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Курс" Width="40" Binding="{Binding Path=Flow.Group.Course}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Потік" Width="120" Binding="{Binding Path=Flow.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кільк. Б" Width="60" Binding="{Binding Path=Flow.AllCountBudget}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кільк. К" Width="60" Binding="{Binding Path=Flow.AllCountContract}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Всього Б" Width="60" Binding="{Binding Path=TotalBudget}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Всього К" Width="60" Binding="{Binding Path=TotalContract}"></DataGridTextColumn>
+            </DataGrid.Columns>
+            </DataGrid>
+        <Button Name="AddButton" Content="Додати" Click="AddButton_OnClick" HorizontalAlignment="Left" Margin="10,404,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="EditButton" Content="Редагувати" Click="EditButton_OnClick" HorizontalAlignment="Left" Margin="90,404,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="DeleteButton" Content="Видалити" Click="DeleteButton_OnClick" HorizontalAlignment="Left" Margin="170,404,0,0" VerticalAlignment="Top" Width="75"/>
+    </Grid>
+</Window>

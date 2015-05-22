@@ -24,5 +24,7 @@ namespace Data
         public virtual DbSet<SubjectInfoK> SubjectInfosKs { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<TeacherLoad> TeacherLoads { get; set; }
+        public virtual DbSet<OtherType> OtherTypes { get; set; }
+
     }
 }
