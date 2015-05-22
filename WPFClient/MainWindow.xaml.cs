@@ -78,5 +78,10 @@ namespace WPFClient
         }
 
 
+        private void FormOtherTypeMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            FormOtherType formOtherType = new FormOtherType();
+            formOtherType.ShowDialog();
+        }
     }
 }

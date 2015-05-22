@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Інші види навчальної роботи кафедри" Height="468" Width="748" ResizeMode="CanMinimize" Loaded="FormOtherType_OnLoaded">
     <Grid>
-        <DataGrid Name="DataGridOtherType" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="389" Width="715">
+        <DataGrid Name="DataGridOtherType" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="389" Width="715">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Вид роботи" Width="120" Binding="{Binding Path=TypeWork}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Під вид роботи" Width="120" Binding="{Binding Path=SubTypeWork}"></DataGridTextColumn>
