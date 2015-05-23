@@ -18,11 +18,19 @@
                 <DataGridTextColumn Header="Кільк К" Width="80" Binding="{Binding Path=AllCountContract}" />
                 <DataGridTextColumn Header="Курс" Width="70" Binding="{Binding Path=Group.Course}" />
             </DataGrid.Columns>
-            </DataGrid>
-        <Button Name="CalculationButton" Content="Розрахувати" Click="CalculationButton_OnClick" HorizontalAlignment="Left" Margin="90,352,0,0" VerticalAlignment="Top" Width="117"/>
-        <Label Content="Всього по Бюджету" HorizontalAlignment="Left" Margin="555,10,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="TextBoxTotalBudget" HorizontalAlignment="Left" Height="23" Margin="555,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Всього по Контракту" HorizontalAlignment="Left" Margin="555,63,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="TextBoxTotalContract" HorizontalAlignment="Left" Height="23" Margin="555,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        </DataGrid>
+        <Button Name="CalculationButton" Content="Розрахувати" Click="CalculationButton_OnClick" HorizontalAlignment="Left" Margin="555,308,0,0" VerticalAlignment="Top" Width="120" Height="39"/>
+        <Label Content="Всього по Бюджету" HorizontalAlignment="Left" Margin="555,205,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TextBoxTotalBudget" Text="0" HorizontalAlignment="Left" Height="23" Margin="555,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Всього по Контракту" HorizontalAlignment="Left" Margin="555,254,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TextBoxTotalContract" Text="0" HorizontalAlignment="Left" Height="23" Margin="555,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Кількість тижнів" HorizontalAlignment="Left" Margin="555,10,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TextBoxCountWeek" HorizontalAlignment="Left" Height="23" Text="0" Margin="555,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Кількість Бюдж. груп" HorizontalAlignment="Left" Margin="555,58,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TextBoxCountBudgetGroup" Text="0" HorizontalAlignment="Left" Height="23" Margin="555,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Кільк. дисц. (ДЦ)" HorizontalAlignment="Left" Margin="555,107,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TextBoxCountSubject" Text="0" HorizontalAlignment="Left" Height="23" Margin="555,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Кільк членів ДЕК" HorizontalAlignment="Left" Margin="555,156,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TextBoxCountDek" Text="0" HorizontalAlignment="Left" Height="23" Margin="555,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>
