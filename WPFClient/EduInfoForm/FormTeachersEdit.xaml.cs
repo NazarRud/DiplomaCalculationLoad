@@ -86,5 +86,21 @@ namespace WPFClient.EduInfoForm
                 TextBoxFaculty.Text = selectedCathedra.Faculty.Name;
             }
         }
+
+        private void TextBoxLastName_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (TextBoxLastName.Text != String.Empty && TextBoxName.Text != String.Empty && TextBoxMiddleName.Text != String.Empty)
+            {
+                
+            }
+        }
+
+        private void TextBoxName_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+        }
+
+        private void TextBoxMiddleName_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+        }
     }
 }

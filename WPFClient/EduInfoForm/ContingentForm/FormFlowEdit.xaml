@@ -46,5 +46,6 @@
         <TextBox Name="TextBoxOresidue" HorizontalAlignment="Left" Height="23" Margin="881,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Форма навчання" HorizontalAlignment="Left" Margin="462,10,0,0" VerticalAlignment="Top"/>
         <ComboBox Name="ComboBoxEduForm" HorizontalAlignment="Left" Margin="462,36,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Name="ClearSubGroupButton" Content="Очистити" Click="ClearSubGroupButton_OnClick" HorizontalAlignment="Left" Margin="962,309,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>

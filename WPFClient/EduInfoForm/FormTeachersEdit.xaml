@@ -4,11 +4,11 @@
         Title="Редагування" Height="281" Width="590" ResizeMode="CanMinimize" Loaded="TeachersGeneralInfoEdit_OnLoaded">
     <Grid>
         <Label Content="Прізвище" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="TextBoxLastName" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <TextBox Name="TextBoxLastName" TextChanged="TextBoxLastName_OnTextChanged" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
         <Label Content="Имя" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="TextBoxName" HorizontalAlignment="Left" Height="23" Margin="10,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <TextBox Name="TextBoxName" TextChanged="TextBoxName_OnTextChanged" HorizontalAlignment="Left" Height="23" Margin="10,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
         <Label Content="Побатькові" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="TextBoxMiddleName" HorizontalAlignment="Left" Height="23" Margin="10,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <TextBox Name="TextBoxMiddleName" TextChanged="TextBoxMiddleName_OnTextChanged" HorizontalAlignment="Left" Height="23" Margin="10,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
         <Label Content="Ініціали" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top"/>
         <TextBox Name="TextBoxInitials" HorizontalAlignment="Left" Height="23" Margin="10,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
         <Label Content="Посада" HorizontalAlignment="Left" Margin="304,10,0,0" VerticalAlignment="Top"/>

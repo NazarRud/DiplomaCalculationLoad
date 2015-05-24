@@ -149,6 +149,7 @@ namespace WPFClient.EduInfoForm.ContingentForm
             TextBoxTotalStudentFlow.Text = String.Empty;
             TextBoxCountSubGroupBudget.Text = String.Empty;
             TextBoxCountSubGroupContract.Text = String.Empty;
+            TextBoxOresidue.Text = String.Empty;
             TextBoxStudBud.Text = String.Empty;
             TextBoxStudCon.Text = String.Empty;
             ListBoxGroup.ItemsSource = null;
@@ -198,7 +199,13 @@ namespace WPFClient.EduInfoForm.ContingentForm
                 MessageBox.Show("Виберіть рядок для видалення !");
                 return;
             }
-            
+
+            if (_uow.SubGroup.Find(selected.Id) == null)
+            {
+                MessageBox.Show("Підгрупи не збережені до БД. Неможливо видалити не існуючих підгруп!");
+                return;
+            }
+
             _uow.SubGroup.Delete(selected.Id);
             _uow.Save();
 
@@ -216,6 +223,11 @@ namespace WPFClient.EduInfoForm.ContingentForm
             }
             totalStud -= oresidue;
             TextBoxOresidue.Text = Convert.ToString(totalStud);
+        }
+
+        private void ClearSubGroupButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            DataGridSubGroup.ItemsSource = null;
         }
     }
 }
