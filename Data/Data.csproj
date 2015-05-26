@@ -70,6 +70,7 @@
     <Compile Include="Entity\SubjectInfoK.cs" />
     <Compile Include="Entity\TeacherInfo.cs" />
     <Compile Include="Entity\TeacherLoad.cs" />
+    <Compile Include="Entity\TeacherLoadOtherType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CathedraRepository.cs" />
     <Compile Include="Repository\FacultyRepository.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Repository\ISubject.cs" />
     <Compile Include="Repository\ISubjectInfoBRepository.cs" />
     <Compile Include="Repository\ITeacherInfoRepository.cs" />
+    <Compile Include="Repository\ITeacherLoadOtherTypeRepository.cs" />
     <Compile Include="Repository\ITeacherLoadRepository.cs" />
     <Compile Include="Repository\IUow.cs" />
     <Compile Include="Repository\OtherTypeRepository.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="Repository\SubjectInfoKRepository.cs" />
     <Compile Include="Repository\SubjectRepository.cs" />
     <Compile Include="Repository\TeacherInfoRepository.cs" />
+    <Compile Include="Repository\TeacherLoadOtherTypeRepository.cs" />
     <Compile Include="Repository\TeacherLoadRepository.cs" />
     <Compile Include="Repository\Uow.cs" />
   </ItemGroup>

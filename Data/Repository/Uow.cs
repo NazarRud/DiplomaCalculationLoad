@@ -14,6 +14,7 @@
         public ISubjectRepository Subject { get; set; }
         public ITeacherLoadRepository TeacherLoad { get; set; }
         public IOtherTypeRepository OtherType { get; set; }
+        public ITeacherLoadOtherTypeRepository TeacherLoadOtherType { get; set; }
 
         public Uow()
         {
@@ -29,6 +30,7 @@
             Subject = new SubjectRepository(_context);
             TeacherLoad = new TeacherLoadRepository(_context);
             OtherType = new OtherTypeRepository(_context);
+            TeacherLoadOtherType = new TeacherLoadOtherTypeRepository(_context);
         }
      
         public void Save()

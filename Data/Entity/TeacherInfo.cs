@@ -8,6 +8,7 @@ namespace Data.Entity
         public TeacherInfo()
         {
             this.TeacherLoad = new HashSet<TeacherLoad>();
+            this.TeacherLoadOtherType = new HashSet<TeacherLoadOtherType>();
         }
         public int Id { get; set; }
         public string LastName { get; set; }
@@ -21,6 +22,7 @@ namespace Data.Entity
         public virtual Cathedra Cathedra { get; set; }
 
         public virtual ICollection<TeacherLoad> TeacherLoad { get; set; }
+        public virtual ICollection<TeacherLoadOtherType> TeacherLoadOtherType { get; set; }
 
     }
 }

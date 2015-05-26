@@ -83,5 +83,11 @@ namespace WPFClient
             FormOtherType formOtherType = new FormOtherType();
             formOtherType.ShowDialog();
         }
+
+        private void FormTeacherLoadOtherType_MenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            FormTeacherLoadOtherType formTeacherLoadOtherType = new FormTeacherLoadOtherType();
+            formTeacherLoadOtherType.ShowDialog();
+        }
     }
 }

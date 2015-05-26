@@ -61,11 +61,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CalculateTypeWork\CalculateOtherType.cs" />
     <Compile Include="LoadForm\FormOtherType.xaml.cs">
       <DependentUpon>FormOtherType.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoadForm\FormOtherTypeEdit.xaml.cs">
       <DependentUpon>FormOtherTypeEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoadForm\FormTeacherLoadOtherType.xaml.cs">
+      <DependentUpon>FormTeacherLoadOtherType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoadForm\FormTeacherLoadOtherTypeEdit.xaml.cs">
+      <DependentUpon>FormTeacherLoadOtherTypeEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="ReportsForm\FormReportsAll.xaml.cs">
       <DependentUpon>FormReportsAll.xaml</DependentUpon>
@@ -147,6 +154,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LoadForm\FormTeacherLoadEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadForm\FormTeacherLoadOtherType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadForm\FormTeacherLoadOtherTypeEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -20,8 +20,9 @@
             <MenuItem Header="Навантаження" Width="auto" Height="25">
                 <MenuItem Header="Дисципліна Бюджет" HorizontalAlignment="Stretch" Width="Auto" Click="FormSubjectInfoB_MenuItem_Click"/>
                 <MenuItem Header="Дисципліна Контракт" HorizontalAlignment="Stretch" Width="Auto" Click="FormSubjectInfoK_MenuItem_Click"/>
-                <MenuItem Header="Викладач" HorizontalAlignment="Stretch" Width="Auto" Click="FormTeacherLoad_MenuItem_Click"/>
+                <MenuItem Header="Викладач по дисциплінам" HorizontalAlignment="Stretch" Width="Auto" Click="FormTeacherLoad_MenuItem_Click"/>
                 <MenuItem Header="Інші види навчальної роботи" HorizontalAlignment="Stretch" Width="Auto" Click="FormOtherTypeMenuItem_OnClick"/>
+                <MenuItem Header="Викладач по іншим видам" HorizontalAlignment="Stretch" Width="Auto" Click="FormTeacherLoadOtherType_MenuItem_OnClick"/>
             </MenuItem>
             <MenuItem Header="Звіти" Width="auto" Height="25" Click="Reports_MenuItem_Click">
             </MenuItem>

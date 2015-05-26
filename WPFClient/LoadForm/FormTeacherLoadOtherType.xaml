@@ -1,0 +1,16 @@
+﻿<Window x:Class="WPFClient.LoadForm.FormTeacherLoadOtherType"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Навантаження на викладача по іншим видам робіт" Height="399.623" Width="1000" ResizeMode="CanMinimize" Loaded="FormTeacherLoadOtherType_OnLoaded">
+    <Grid>
+        <DataGrid Name="DataGridTeacherLoadOtherType" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="314" Width="897">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="" Width="" Binding="{Binding Path=Total}" />
+            </DataGrid.Columns>   
+        </DataGrid>
+        <Button Name="AddButton" Content="Додати" Click="AddButton_OnClick" HorizontalAlignment="Left" Margin="10,329,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="EditButton" Content="Редагувати" Click="EditButton_OnClick" HorizontalAlignment="Left" Margin="90,329,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="DeleteButton" Content="Видалити" Click="DeleteButton_OnClick" HorizontalAlignment="Left" Margin="170,329,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Window>
