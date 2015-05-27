@@ -10,7 +10,7 @@ namespace Data.Entity
         public int CountStudentB { get; set; }
         public int CountStudentK { get; set; }
         public double CountHoursB { get; set; }
-        public double CountHourseC { get; set; }
+        public double CountHoursC { get; set; }
         public double Total { get; set; }
 
         public virtual TeacherInfo TeacherInfo { get; set; }
