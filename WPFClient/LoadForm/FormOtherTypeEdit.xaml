@@ -19,7 +19,7 @@
                 <DataGridTextColumn Header="Курс" Width="70" Binding="{Binding Path=Group.Course}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Name="CalculationButton" Content="Розрахувати" Click="CalculationButton_OnClick" HorizontalAlignment="Left" Margin="555,260,0,0" VerticalAlignment="Top" Width="120" Height="20" RenderTransformOrigin="0.483,2.04"/>
+        <Button Name="CalculationButton" Content="Розрахувати" Click="CalculationButton_OnClick" HorizontalAlignment="Left" Margin="555,330,0,0" VerticalAlignment="Top" Width="120" Height="20" RenderTransformOrigin="0.483,2.04"/>
         <Label Content="Всього по Бюджету" HorizontalAlignment="Left" Margin="555,206,0,0" VerticalAlignment="Top"/>
         <TextBox Name="TextBoxTotalBudget" Text="0" HorizontalAlignment="Left" Height="23" Margin="555,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Всього по Контракту" HorizontalAlignment="Left" Margin="680,206,0,0" VerticalAlignment="Top"/>
@@ -41,5 +41,7 @@
         <TextBox Name="TextBoxCountHoursAspDok" HorizontalAlignment="Left" Height="23" Margin="680,183,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Кільк год. Екзам." HorizontalAlignment="Left" Margin="680,108,0,0" VerticalAlignment="Top"/>
         <TextBox Name="TextBoxCountHoursExam" HorizontalAlignment="Left" Height="23" Margin="680,134,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Всього" HorizontalAlignment="Left" Margin="555,255,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TextBoxTotalHourse" HorizontalAlignment="Left" Height="23" Margin="555,281,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>

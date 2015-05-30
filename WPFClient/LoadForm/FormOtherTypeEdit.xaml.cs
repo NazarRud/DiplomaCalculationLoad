@@ -58,6 +58,7 @@ namespace WPFClient.LoadForm
             OtherType.Semestr = SemestrComboBox.SelectedItem is Semestr ? (Semestr)SemestrComboBox.SelectedItem : (Semestr)0;
             OtherType.TotalBudget = Convert.ToDouble(TextBoxTotalBudget.Text);
             OtherType.TotalContract = Convert.ToDouble(TextBoxTotalContract.Text);
+            OtherType.TotalHourse = Convert.ToDouble(TextBoxTotalHourse.Text);
             OtherType.Flow = DataGridFlow.SelectedItem as Flow;
 
             DialogResult = true;
@@ -94,6 +95,7 @@ namespace WPFClient.LoadForm
 
             TextBoxTotalBudget.Text = itemList[0].ToString();
             TextBoxTotalContract.Text = itemList[1].ToString();
+            TextBoxTotalHourse.Text = (itemList[0] + itemList[1]).ToString();
 
         }
     }

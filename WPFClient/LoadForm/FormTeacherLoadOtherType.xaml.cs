@@ -1,6 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using Data.Entity;
+using Data.Entity.Enum;
 using Data.Repository;
 
 namespace WPFClient.LoadForm
@@ -20,6 +24,8 @@ namespace WPFClient.LoadForm
 
         private void FormTeacherLoadOtherType_OnLoaded(object sender, RoutedEventArgs e)
         {
+            ComboBoxTypeWork.ItemsSource = Enum.GetValues(typeof(TypeWork)).Cast<TypeWork>();
+            ComboBoxSubTypeWork.ItemsSource = Enum.GetValues(typeof(SubTypeWork)).Cast<SubTypeWork>();
             DataGridTeacherLoadOtherType.ItemsSource = _uow.TeacherLoadOtherType.All.ToList();
         }
 
@@ -28,8 +34,15 @@ namespace WPFClient.LoadForm
             var formTeacherLoadOtherTypeEdit = new FormTeacherLoadOtherTypeEdit();
             if (formTeacherLoadOtherTypeEdit.ShowDialog() == true)
             {
-                _uow.TeacherLoadOtherType.InsertOrUpdate(formTeacherLoadOtherTypeEdit.TeacherLoadOtherType);
-                _uow.Save();
+                if (formTeacherLoadOtherTypeEdit.TeacherLoadOtherTypesList != null)
+                {
+                    var list = formTeacherLoadOtherTypeEdit.TeacherLoadOtherTypesList;
+                    foreach (var item in list)
+                    {
+                        _uow.TeacherLoadOtherType.InsertOrUpdate(item);
+                        _uow.Save();
+                    }
+                }
             }
             else
             {
@@ -41,41 +54,65 @@ namespace WPFClient.LoadForm
 
         private void EditButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var selected = DataGridTeacherLoadOtherType.SelectedItem as TeacherLoadOtherType;
-            if (selected == null)
+            var selected = DataGridTeacherLoadOtherType.ItemsSource as List<TeacherLoadOtherType>;
+            if (ComboBoxTypeWork.SelectedItem == null || ComboBoxSubTypeWork.SelectedItem == null)
             {
-                 MessageBox.Show("Виберіть рядок для редагування !");
-                 return;
+                MessageBox.Show("Виберіть Вид роботи і під вид для редагування !");
+                return;
             }
 
-            var editedItem = _uow.TeacherLoadOtherType.Find(selected.Id);
-            var formTeacherLoadOtherTypeEdit = new FormTeacherLoadOtherTypeEdit();
+            var formTeacherLoadOtherTypeEdit = new FormTeacherLoadOtherTypeEdit(selected);
             if (formTeacherLoadOtherTypeEdit.ShowDialog() == true)
             {
-                _uow.TeacherLoadOtherType.InsertOrUpdate(formTeacherLoadOtherTypeEdit.TeacherLoadOtherType);
-                _uow.Save();
+                if (formTeacherLoadOtherTypeEdit.TeacherLoadOtherTypesList != null)
+                {
+                    var list = formTeacherLoadOtherTypeEdit.TeacherLoadOtherTypesList;
+                    foreach (var item in list)
+                    {
+                        _uow.TeacherLoadOtherType.InsertOrUpdate(item);
+                        _uow.Save();
+                    }
+                }
             }
             else
             {
                 formTeacherLoadOtherTypeEdit.Close();
             }
+            ComboBoxTypeWork.SelectedItem = null;
+            ComboBoxSubTypeWork.SelectedItem = null;
 
             DataGridTeacherLoadOtherType.ItemsSource = _uow.TeacherLoadOtherType.All.ToList();
         }
 
         private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var selected = DataGridTeacherLoadOtherType.SelectedItem as TeacherLoadOtherType;
-            if (selected == null)
+            var selected = DataGridTeacherLoadOtherType.ItemsSource as List<TeacherLoadOtherType>;
+            if (selected == null || ComboBoxTypeWork.SelectedItem == null || ComboBoxSubTypeWork.SelectedItem == null )
             {
-                MessageBox.Show("Виберіть рядок для видалення !");
+                MessageBox.Show("Виберіть Вид роботи і під вид для видалення !");
                 return;
             }
 
-            _uow.TeacherLoadOtherType.Delete(selected.Id);
-            _uow.Save();
+                foreach (var type in selected)
+                {
+                    _uow.TeacherLoadOtherType.Delete(type.Id);
+                    _uow.Save();
+
+                }
+
+            ComboBoxTypeWork.SelectedItem = null;
+            ComboBoxSubTypeWork.SelectedItem = null;
 
             DataGridTeacherLoadOtherType.ItemsSource = _uow.TeacherLoadOtherType.All.ToList();
+        }
+
+        private void ComboBoxSubTypeWork_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selected = ComboBoxTypeWork.SelectedItem is TypeWork ? (TypeWork)ComboBoxTypeWork.SelectedItem : (TypeWork)0;
+            var selectedSub = ComboBoxSubTypeWork.SelectedItem is SubTypeWork ? (SubTypeWork)ComboBoxSubTypeWork.SelectedItem : (SubTypeWork)0;
+            var selectedOtherType = _uow.OtherType.All.Where(p => p.TypeWork == selected && p.SubTypeWork == selectedSub).ToList();
+            var list = selectedOtherType.SelectMany(otherType => otherType.TeacherLoadOtherType).ToList();
+            DataGridTeacherLoadOtherType.ItemsSource = list;
         }
     }
 }

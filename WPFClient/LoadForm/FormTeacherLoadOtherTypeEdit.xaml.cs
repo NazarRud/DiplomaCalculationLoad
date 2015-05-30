@@ -14,10 +14,11 @@ namespace WPFClient.LoadForm
     /// </summary>
     public partial class FormTeacherLoadOtherTypeEdit : Window
     {
-        private IUow _uow;
+        private readonly IUow _uow;
         private readonly App _app = Application.Current as App;
         public TeacherLoadOtherType TeacherLoadOtherType { get; set; }
 
+        public List<TeacherLoadOtherType> TeacherLoadOtherTypesList;
         private readonly List<TeacherInfo> _teacherInfos;
         private readonly List<OtherType> _otherTypes;
         private readonly List<TeacherLoadOtherType> _tempList;
@@ -32,16 +33,37 @@ namespace WPFClient.LoadForm
             _tempList = new List<TeacherLoadOtherType>();
         }
 
+        public FormTeacherLoadOtherTypeEdit(List<TeacherLoadOtherType> teacherLoadOtherType) : this()
+        {
+            TeacherLoadOtherTypesList = teacherLoadOtherType;
+        }
+
         private void FormTeacherLoadOtherTypeEdit_OnLoaded(object sender, RoutedEventArgs e)
         {
             ComboBoxTeacher.ItemsSource = _uow.TeacherInfo.All.ToList();
             ComboBoxTeacher.DisplayMemberPath = "Initials";
             DataGridOtherType.ItemsSource = _uow.OtherType.All.ToList();
+
+            if (TeacherLoadOtherTypesList != null)
+                DataGridTeacherLoadOtherType.ItemsSource = TeacherLoadOtherTypesList;
         }
 
         private void SaveButton_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            if (TeacherLoadOtherTypesList == null)
+                TeacherLoadOtherTypesList = new List<TeacherLoadOtherType>();
+
+            var itemTeacherLoadOtherType = DataGridTeacherLoadOtherType.ItemsSource as List<TeacherLoadOtherType>;
+            if (itemTeacherLoadOtherType == null) return;
+
+            foreach (var item in itemTeacherLoadOtherType)
+            {
+                TeacherLoadOtherType type = item;
+
+                TeacherLoadOtherTypesList.Add(type);
+            }
+
+            DialogResult = true;
         }
 
         private void CancleButton_OnClick(object sender, RoutedEventArgs e)
@@ -50,29 +72,27 @@ namespace WPFClient.LoadForm
         }
 
         private void CalculationButton_OnClick(object sender, RoutedEventArgs e)
-        {         
-            if(_teacherInfos == null || _otherTypes == null || _tempList == null) return;
+        {
+            if (_teacherInfos == null || _otherTypes == null) return;
 
             int lengthTecher = _teacherInfos.Count;
-            //int lengthOtherType = _otherTypes.Count;
 
-            double sumHoursB = _otherTypes.Sum(type => type.TotalBudget) / lengthTecher;
-            double sumHourseK = _otherTypes.Sum(type => type.TotalContract) / lengthTecher;
-            int sumStudB = _otherTypes.Sum(type => type.Flow.AllCountBudget) / lengthTecher;
-            int sumStudK = _otherTypes.Sum(type => type.Flow.AllCountContract) / lengthTecher;
-    
             for (int i = 0; i < lengthTecher; i++)
             {
-                var tempLoad = new TeacherLoadOtherType
-                {
-                    CountStudentB = sumStudB,
-                    CountStudentK = sumStudK,
-                    CountHoursB = sumHoursB,
-                    CountHoursC = sumHourseK,
-                    Total = sumHoursB + sumHourseK,
-                    TeacherInfo = _teacherInfos[i],
-                    OtherType = DataGridOtherType.SelectedItem as OtherType
-                };
+                var tempLoad = new TeacherLoadOtherType();
+
+
+                var temp = DataGridOtherType.SelectedItem as OtherType;
+                if (temp == null) return;
+
+                tempLoad.CountStudentB = temp.Flow.AllCountBudget / lengthTecher;
+                tempLoad.CountStudentK = temp.Flow.AllCountContract / lengthTecher;
+                tempLoad.CountHoursB = temp.TotalBudget / lengthTecher;
+                tempLoad.CountHoursC = temp.TotalContract / lengthTecher;
+                tempLoad.Total = temp.TotalHourse / lengthTecher;
+                tempLoad.TeacherInfo = _teacherInfos[i];
+                tempLoad.OtherType = DataGridOtherType.SelectedItem as OtherType;
+
 
                 _tempList.Add(tempLoad);
             }
@@ -95,18 +115,19 @@ namespace WPFClient.LoadForm
             int countHoursExam = Convert.ToInt32(TextBoxCountHoursExam.Text);
 
             var load = DataGridTeacherLoadOtherType.ItemsSource as List<TeacherLoadOtherType>;
-            if(load == null) return;
+            if (load == null) return;
 
-            List< TeacherLoadOtherType> loadList = new List<TeacherLoadOtherType>();
+            var loadList = new List<TeacherLoadOtherType>();
 
             foreach (var loadOtherType in load)
             {
-                double[] arr = CalculateOtherType.Calculate(loadOtherType.OtherType.TypeWork,loadOtherType.OtherType.SubTypeWork, loadOtherType.CountStudentB, loadOtherType.CountStudentK, countHoursExam, countAspDok, T, N, G, GK, DG, d);
+                double[] arr = CalculateOtherType.Calculate(loadOtherType.OtherType.TypeWork, loadOtherType.OtherType.SubTypeWork, loadOtherType.CountStudentB, loadOtherType.CountStudentK, countHoursExam, countAspDok, T, N, G, GK, DG, d);
                 loadOtherType.CountHoursB = arr[0];
                 loadOtherType.CountHoursC = arr[1];
                 loadOtherType.Total = arr[0] + arr[1];
 
                 loadList.Add(loadOtherType);
+
             }
 
             DataGridTeacherLoadOtherType.ItemsSource = null;
@@ -116,7 +137,7 @@ namespace WPFClient.LoadForm
         private void ComboBoxTeacher_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedTeacher = ComboBoxTeacher.SelectedItem as TeacherInfo;
-            if(selectedTeacher == null) return;
+            if (selectedTeacher == null) return;
 
             _teacherInfos.Add(selectedTeacher);
 
@@ -128,7 +149,7 @@ namespace WPFClient.LoadForm
         private void DataGridOtherType_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedTeacher = DataGridOtherType.SelectedItem as OtherType;
-            if(selectedTeacher == null) return;
+            if (selectedTeacher == null) return;
 
             _otherTypes.Add(selectedTeacher);
         }
@@ -142,19 +163,6 @@ namespace WPFClient.LoadForm
             DataGridTeacherLoadOtherType.ItemsSource = null;
         }
 
-        //private int[] GetValues()
-        //{
-        //    var arr = new int[10];
-
-        //    int T = Convert.ToInt32(TextBoxCountWeek.Text);
-        //    int G = Convert.ToInt32(TextBoxCountBudgetGroup.Text);
-        //    int GK = Convert.ToInt32(TextBoxCountContractGroup.Text);
-        //    int DG = Convert.ToInt32(TextBoxCountSubject.Text);
-        //    int d = Convert.ToInt32(TextBoxCountDek.Text);
-        //    int N = Convert.ToInt32(TextBoxScopeSubject.Text);
-        //    int countAspDok = Convert.ToInt32(TextBoxCountHoursAspDok.Text);
-        //    int countHoursExam = Convert.ToInt32(TextBoxCountHoursExam.Text);
-        //}
         private void ClearLitBox_OnClick(object sender, RoutedEventArgs e)
         {
             ListBoxTeacher.ItemsSource = null;
