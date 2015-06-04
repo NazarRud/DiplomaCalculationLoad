@@ -51,6 +51,9 @@ TestClient/bin
 TestClient/obj
 Reports/bin
 Reports/obj
+UnitTests/bin
+UnitTests/obj
+TestResults
 packages
 bin
 obj
