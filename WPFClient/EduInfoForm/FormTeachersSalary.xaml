@@ -1,0 +1,18 @@
+﻿<Window x:Class="WPFClient.EduInfoForm.FormTeachersSalary"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FormTeachersSalary" Height="363.396" Width="963.434" ResizeMode="CanMinimize" Loaded="FormTeachersSalary_OnLoaded">
+    <Grid>
+        <DataGrid Name="DataGridPayment" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="261" Width="516">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Посада" Width="200" Binding="{Binding Path=Appointment}" />
+                <DataGridTextColumn Header="Найменування посад" Width="200" Binding="{Binding Path=AppointmentSub}" />
+                <DataGridTextColumn Header="Оклад" Width="100" Binding="{Binding Path=Salary}" />
+            </DataGrid.Columns>
+            </DataGrid>
+        <Button Name="SaveButton" Click="SaveButton_OnClick" Content="Додати" HorizontalAlignment="Left" Margin="10,276,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="EditButton" Click="EditButton_OnClick" Content="Редагувати" HorizontalAlignment="Left" Margin="90,276,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="DeleteButton" Click="DeleteButton_OnClick" Content="Видалити" HorizontalAlignment="Left" Margin="170,276,0,0" VerticalAlignment="Top" Width="75"/>
+        <DataGrid HorizontalAlignment="Left" Margin="531,10,0,0" VerticalAlignment="Top" Height="261" Width="320"/>
+    </Grid>
+</Window>

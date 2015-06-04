@@ -1,4 +1,9 @@
-﻿using System.Windows;
+﻿using System;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
+using Data.Entity;
+using Data.Repository;
 using WPFClient.EduInfoForm;
 using WPFClient.EduInfoForm.AboutInfoForm;
 using WPFClient.EduInfoForm.ContingentForm;
@@ -12,9 +17,17 @@ namespace WPFClient
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly IUow _uow;
+        private readonly App _app = Application.Current as App;
         public MainWindow()
         {
+            if (_app != null) _uow = _app.Uow;
             InitializeComponent();
+        }
+
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            DataGridTeacherTotalLoad.ItemsSource = _uow.TeacherInfo.All.ToList();
         }
 
         private void FormFaculty_MenuItem_Click(object sender, RoutedEventArgs e)
@@ -89,5 +102,31 @@ namespace WPFClient
             FormTeacherLoadOtherType formTeacherLoadOtherType = new FormTeacherLoadOtherType();
             formTeacherLoadOtherType.ShowDialog();
         }
+        private void FormTeachersSalary_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            FormTeachersSalary formTeachersSalary = new FormTeachersSalary();
+            formTeachersSalary.ShowDialog();
+        }
+
+        private void FormTeachersAllowance_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DataGridTeacherTotalLoad_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selected = DataGridTeacherTotalLoad.SelectedItem as TeacherInfo;
+            if(selected == null) return;
+
+            DataGridLoadSubject.ItemsSource = selected.TeacherLoad.ToList();
+            DataGridLoadOtherType.ItemsSource = selected.TeacherLoadOtherType.ToList();
+
+            double tempHoursLoad = selected.TeacherLoad.Sum(load => load.TotalHourse);
+            double tempHoursOtherLoad = selected.TeacherLoadOtherType.Sum(load => load.Total);
+
+            TextBoxTotalHours.Text = Convert.ToString(tempHoursLoad + tempHoursOtherLoad);
+            DataGridTeacherTotalLoad.ItemsSource = _uow.TeacherInfo.All.ToList();
+        }
+
     }
 }

@@ -16,6 +16,8 @@ namespace Data.Repository
         ITeacherLoadRepository TeacherLoad { get; set; }
         IOtherTypeRepository OtherType { get; set; }
         ITeacherLoadOtherTypeRepository TeacherLoadOtherType { get; set; }
+        IPaymentRepository Payment { get; set; }
+        IPaymentForYearsRepository PaymentForYears { get; set; }
         void Save();
     }
 }

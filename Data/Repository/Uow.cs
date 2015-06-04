@@ -15,6 +15,9 @@
         public ITeacherLoadRepository TeacherLoad { get; set; }
         public IOtherTypeRepository OtherType { get; set; }
         public ITeacherLoadOtherTypeRepository TeacherLoadOtherType { get; set; }
+        public IPaymentRepository Payment { get; set; }
+        public IPaymentForYearsRepository PaymentForYears { get; set; }
+
 
         public Uow()
         {
@@ -31,6 +34,8 @@
             TeacherLoad = new TeacherLoadRepository(_context);
             OtherType = new OtherTypeRepository(_context);
             TeacherLoadOtherType = new TeacherLoadOtherTypeRepository(_context);
+            Payment = new PaymentRepository(_context);
+            PaymentForYears = new PaymentForYearsRepository(_context);
         }
      
         public void Save()
@@ -42,5 +47,8 @@
         {
             _context.Dispose();
         }
+
+
+
     }
 }

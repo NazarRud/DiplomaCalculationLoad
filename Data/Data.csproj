@@ -59,11 +59,14 @@
     <Compile Include="Entity\Enum\Semestr.cs" />
     <Compile Include="Entity\Enum\SubTypeWork.cs" />
     <Compile Include="Entity\Enum\TypeWork.cs" />
+    <Compile Include="Entity\Enum\YearsCount.cs" />
     <Compile Include="Entity\Faculty.cs" />
     <Compile Include="Entity\Flow.cs" />
     <Compile Include="Entity\Group.cs" />
     <Compile Include="Entity\Enum\QualificationLevel.cs" />
     <Compile Include="Entity\OtherType.cs" />
+    <Compile Include="Entity\Payment.cs" />
+    <Compile Include="Entity\PaymentForYears.cs" />
     <Compile Include="Entity\SubGroup.cs" />
     <Compile Include="Entity\Subject.cs" />
     <Compile Include="Entity\SubjectInfoB.cs" />
@@ -81,6 +84,8 @@
     <Compile Include="Repository\IFlowRepository.cs" />
     <Compile Include="Repository\IGroupRepository.cs" />
     <Compile Include="Repository\IOtherTypeRepository.cs" />
+    <Compile Include="Repository\IPaymentForYearsRepository.cs" />
+    <Compile Include="Repository\IPaymentRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\ISubGroupRepository.cs" />
     <Compile Include="Repository\ISubject.cs" />
@@ -90,6 +95,8 @@
     <Compile Include="Repository\ITeacherLoadRepository.cs" />
     <Compile Include="Repository\IUow.cs" />
     <Compile Include="Repository\OtherTypeRepository.cs" />
+    <Compile Include="Repository\PaymentForYearsRepository.cs" />
+    <Compile Include="Repository\PaymentRepository.cs" />
     <Compile Include="Repository\SubGroupRepository.cs" />
     <Compile Include="Repository\SubjectInfoBRepository.cs" />
     <Compile Include="Repository\ISubjectInfoKRepository.cs" />
