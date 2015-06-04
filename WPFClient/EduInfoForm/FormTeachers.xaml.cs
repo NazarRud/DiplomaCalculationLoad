@@ -36,7 +36,6 @@ namespace WPFClient.EduInfoForm
                 formTeachersEdit.Close();
             }
 
-            DataGrid.ItemsSource = null;
             DataGrid.ItemsSource = _uow.TeacherInfo.All.ToList();
         }
 

@@ -62,6 +62,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CalculateTypeWork\CalculateOtherType.cs" />
+    <Compile Include="EduInfoForm\FormTeachersSalary.xaml.cs">
+      <DependentUpon>FormTeachersSalary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EduInfoForm\FormTeachersSalaryEdit.xaml.cs">
+      <DependentUpon>FormTeachersSalaryEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoadForm\FormOtherType.xaml.cs">
       <DependentUpon>FormOtherType.xaml</DependentUpon>
     </Compile>
@@ -76,6 +82,11 @@
     </Compile>
     <Compile Include="ReportsForm\FormReportsAll.xaml.cs">
       <DependentUpon>FormReportsAll.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FileRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FileRes.resx</DependentUpon>
     </Compile>
     <Page Include="EduInfoForm\AboutInfoForm\FormCathedra.xaml">
       <SubType>Designer</SubType>
@@ -114,6 +125,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EduInfoForm\FormSubjectEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EduInfoForm\FormTeachersSalary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EduInfoForm\FormTeachersSalaryEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -253,6 +272,10 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileRes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FileRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />

@@ -18,7 +18,8 @@ namespace Data.Entity
         public Rank Rank { get; set; }
         public Appointment Appointment { get; set; }
         public Degree Degree { get; set; }
-       
+        public int Allowance { get; set; }
+
         public virtual Cathedra Cathedra { get; set; }
 
         public virtual ICollection<TeacherLoad> TeacherLoad { get; set; }
