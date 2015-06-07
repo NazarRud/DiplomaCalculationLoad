@@ -20,7 +20,6 @@ namespace Reports.ReportPages
         private int availableRows = 30;
         List<FakeData> fakeData = FakeData.GetFakeData();
         List<FakeData> fd;
-        Paragraph paragraph;
 
         public override void CreateAdditionalElement()
         {

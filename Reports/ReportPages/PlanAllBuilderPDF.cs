@@ -10,6 +10,7 @@ using PdfSharp.Pdf;
 using MigraDoc.Rendering;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.DocumentObjectModel.Shapes;
+using Reports.Public;
 
 namespace Reports.ReportPages
 {
@@ -46,13 +47,13 @@ namespace Reports.ReportPages
             cell.MergeRight = 20;
             cell.Borders.Right.Width = 0;
             cell = row.Cells[21];
-            cell.AddParagraph("<-- xxxx-xxxx н.р. -->").Format.Alignment = ParagraphAlignment.Center;
+            cell.AddParagraph(ReportsCreator.CurrentYear + " н.р.").Format.Alignment = ParagraphAlignment.Center;
             cell.Format.Font.Bold = true;
             cell.Format.Font.Color = Colors.Blue;
             cell.MergeRight = 10;
             cell.Borders.Right.Width = 0;
             cell = row.Cells[32];
-            cell.AddParagraph("<--  xx.хх.хххх  -->").Format.Alignment = ParagraphAlignment.Center;
+            cell.AddParagraph(DateTime.Now.ToString().Substring(0, 10)).Format.Alignment = ParagraphAlignment.Center;
             cell.Format.Font.Bold = true;
             cell.Format.Font.Color = Colors.Blue;
             cell.MergeRight = 9;

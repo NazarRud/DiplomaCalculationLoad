@@ -9,6 +9,7 @@ using MigraDoc.DocumentObjectModel;
 using PdfSharp.Pdf;
 using MigraDoc.Rendering;
 using MigraDoc.DocumentObjectModel.Tables;
+using Reports.Public;
 
 namespace Reports.ReportPages
 {
@@ -44,7 +45,7 @@ namespace Reports.ReportPages
             cell.Format.Font.Color = Colors.Blue;
             cell.MergeRight = 2;
             cell = row.Cells[3];
-            cell.AddParagraph("2015-2016 навчальний рік").Format.Alignment = ParagraphAlignment.Center;
+            cell.AddParagraph(ReportsCreator.CurrentYear + " навчальний рік").Format.Alignment = ParagraphAlignment.Center;
             cell.Format.Font.Bold = true;
             cell.Format.Font.Color = Colors.Blue;
             cell.MergeRight = 3;
