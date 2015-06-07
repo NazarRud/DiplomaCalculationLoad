@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using PdfSharp.Pdf;
 using MigraDoc.Rendering;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.DocumentObjectModel.Shapes;
+using Reports.Public;
 
 namespace Reports
 {
@@ -22,7 +24,7 @@ namespace Reports
         protected Column column;
         protected Row row;
         protected Cell cell;
-        protected TextFrame frame;
+        protected ICollection renderBody;
 
         public PDFPageBuilder()
         {
@@ -31,6 +33,7 @@ namespace Reports
             column = new Column();
             row = new Row();
             cell = new Cell();
+            renderBody = ReportsCreator.renderBody;
             InitDocumentSettings();
         }
 
