@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Diagnostics;
+using System.IO;
 using MigraDoc;
 using MigraDoc.DocumentObjectModel;
 using PdfSharp.Pdf;
@@ -27,6 +28,8 @@ namespace Reports.SaveFormats
 
         public override void SaveDocument(Document document)
         {
+            InitDirectoryStructure();
+
             document.UseCmykColor = true;
 
             // Create a renderer for the MigraDoc document.
@@ -39,10 +42,10 @@ namespace Reports.SaveFormats
             pdfRenderer.RenderDocument();
 
             // Save the document...
-            pdfRenderer.PdfDocument.Save(String.Format("{0}.pdf", fileName));
+            pdfRenderer.PdfDocument.Save(Environment.CurrentDirectory + @"\Звіти\Поточні\" + Enum.GetName(typeof(Monthes), DateTime.Now.Month) + " " + DateTime.Now.Year + @"\" + fileName + ".pdf");
 
             // ...and start a viewer.
-            Process.Start(String.Format("{0}.pdf", fileName));
+            //Process.Start(String.Format("{0}.pdf", fileName));
         }
     }
 }

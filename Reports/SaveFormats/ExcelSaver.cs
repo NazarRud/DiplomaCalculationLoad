@@ -22,7 +22,9 @@ namespace Reports.SaveFormats
         }
         public override void SaveDocument(object[] document)
         {
-            (document[1] as Excel.Workbook).Close(true, Environment.CurrentDirectory + "\\" + fileName + ".xls", null);
+            InitDirectoryStructure();
+
+            (document[1] as Excel.Workbook).Close(true, Environment.CurrentDirectory + @"\Звіти\Поточні\" + Enum.GetName(typeof(Monthes), DateTime.Now.Month) + " " + DateTime.Now.Year + @"\" + fileName + ".xls", null);
             (document[2] as Excel.Application).Quit();
 
             ExcelPageBuilder.ReleaseObject(document[0] as Excel.Application);
@@ -30,7 +32,7 @@ namespace Reports.SaveFormats
             ExcelPageBuilder.ReleaseObject(document[2] as Excel.Application);
             File.Delete(Environment.CurrentDirectory + "\\Temp.xls");
 
-            Process.Start(String.Format("{0}.xls", fileName));
+            //Process.Start(String.Format("{0}.xls", fileName));
 
         }
 
