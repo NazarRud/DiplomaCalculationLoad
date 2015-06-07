@@ -21,6 +21,7 @@
                     <RadioButton Content="Виплати за контрактом" HorizontalAlignment="Left" 
                                  Margin="20,174,0,0" VerticalAlignment="Top" Height="25" Name="PaymentSum"/>
                     <Button Content="Сформувати" HorizontalAlignment="Left" Margin="116,215,0,0" VerticalAlignment="Top" Width="105" Height="40" Click="CreateK2Button_Click"/>
+                    <CheckBox Content="Повний" HorizontalAlignment="Left" Margin="186,174,0,0" VerticalAlignment="Top" Name="isFullCheckBox"/>
                 </Grid>
             </TabItem>
             <TabItem Header="К-4" Padding="20 0 20 0" Height="25" Name="K4Tab">
@@ -45,8 +46,6 @@
                     <ComboBox HorizontalAlignment="Left" Margin="64,36,0,0" VerticalAlignment="Top" Width="193" Height="24" Name="DisciplineCombobox"/>
                     <Label Content="Інші види навчальних дисциплін:" HorizontalAlignment="Left" Margin="64,76,0,0" VerticalAlignment="Top" Padding="0 5 "/>
                     <ComboBox HorizontalAlignment="Left" Margin="64,102,0,0" VerticalAlignment="Top" Width="193" Height="24" Name="OtherDisciplineCombobox"/>
-                    <Label Content="Семестр:" HorizontalAlignment="Left" Margin="64,143,0,0" VerticalAlignment="Top" Padding="0 5 "/>
-                    <ComboBox HorizontalAlignment="Left" Margin="64,169,0,0" VerticalAlignment="Top" Width="193" Height="24" Name="TermOtherCombobox"/>
                     <Button Content="Сформувати" HorizontalAlignment="Left" Margin="116,215,0,0" VerticalAlignment="Top" Width="105" Height="40" Click="CreateOtherButton_Click"/>
                 </Grid>
             </TabItem>
@@ -56,7 +55,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <ProgressBar HorizontalAlignment="Left" Height="31" Margin="0,353,0,0" VerticalAlignment="Top" Width="323"/>
+        <ProgressBar HorizontalAlignment="Left" Height="31" Margin="0,353,0,0" VerticalAlignment="Top" Width="323" Name="ProgressBar" IsIndeterminate="False"/>
         <Button Content="X" HorizontalAlignment="Left" Margin="290,0,0,0" VerticalAlignment="Top" Width="33" 
                 Background="White" BorderThickness="0" Click="CloseButton_Click"/>
 
