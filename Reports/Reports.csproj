@@ -59,6 +59,7 @@
     <Compile Include="CreatingDirector.cs" />
     <Compile Include="ExcelPageBuilder.cs" />
     <Compile Include="FakeData.cs" />
+    <Compile Include="Monthes.cs" />
     <Compile Include="PDFPageBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Public\EduType.cs" />
