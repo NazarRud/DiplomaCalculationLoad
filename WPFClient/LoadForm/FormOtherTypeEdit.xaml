@@ -11,7 +11,7 @@
         <ComboBox Name="SubTypeWorkComboBox" HorizontalAlignment="Left" Margin="265,36,0,0" VerticalAlignment="Top" Width="160"/>
         <Label Content="Семестр" HorizontalAlignment="Left" Margin="430,10,0,0" VerticalAlignment="Top"/>
         <ComboBox Name="SemestrComboBox" HorizontalAlignment="Left" Margin="430,36,0,0" VerticalAlignment="Top" Width="120"/>
-        <DataGrid Name="DataGridFlow" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Height="257" Width="540">
+        <DataGrid Name="DataGridFlow" AutoGenerateColumns="False" SelectionChanged="DataGridFlow_OnSelectionChanged" IsReadOnly="True" CanUserAddRows="False" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Height="257" Width="540">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Назва потоку" Width="300" Binding="{Binding Path=Name}" />
                 <DataGridTextColumn Header="Кільк Б" Width="80" Binding="{Binding Path=AllCountBudget}" />

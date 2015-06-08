@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using Data.Entity;
 using Data.Entity.Enum;
 using Data.Repository;
@@ -17,6 +18,7 @@ namespace WPFClient.LoadForm
         private IUow _uow;
         public OtherType OtherType { get; set; }
         private readonly App _app = Application.Current as App;
+        private Flow _selected;
         public FormOtherTypeEdit()
         {
             if (_app != null) _uow = _app.Uow;
@@ -74,10 +76,6 @@ namespace WPFClient.LoadForm
         {
             var selectedTypeWork = TypeWorkComboBox.SelectedItem is TypeWork ? (TypeWork)TypeWorkComboBox.SelectedValue : (TypeWork)0;
             var selectedSubTypeWork = SubTypeWorkComboBox.SelectedItem is SubTypeWork ? (SubTypeWork)SubTypeWorkComboBox.SelectedValue : (SubTypeWork)0;
-            var selectedFlow = DataGridFlow.SelectedItem as Flow;
-
-            if (selectedFlow == null)
-                return;
 
             int T = Convert.ToInt32(TextBoxCountWeek.Text);
             int G = Convert.ToInt32(TextBoxCountBudgetGroup.Text);
@@ -88,14 +86,27 @@ namespace WPFClient.LoadForm
             int countAspDok = Convert.ToInt32(TextBoxCountHoursAspDok.Text);
             int countHoursExam = Convert.ToInt32(TextBoxCountHoursExam.Text);
 
-            int countStudB = selectedFlow.AllCountBudget;
-            int countStudC = selectedFlow.AllCountContract;
+            int countStudB = _selected.AllCountBudget;
+            int countStudC = _selected.AllCountContract;
 
             var itemList = CalculateOtherType.Calculate(selectedTypeWork, selectedSubTypeWork, countStudB, countStudC, countHoursExam, countAspDok, T, N, G, GK, DG, d);
 
             TextBoxTotalBudget.Text = itemList[0].ToString();
             TextBoxTotalContract.Text = itemList[1].ToString();
             TextBoxTotalHourse.Text = (itemList[0] + itemList[1]).ToString();
+
+        }
+
+        private void DataGridFlow_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _selected = DataGridFlow.SelectedItem as Flow;
+
+            if (_selected == null)
+                return;
+
+            TextBoxCountBudgetGroup.Text = _selected.Group.Count(g => g.EducationType == EducationType.Бюджет).ToString();
+            TextBoxCountContractGroup.Text = _selected.Group.Count(g => g.EducationType == EducationType.Контракт).ToString();
+
 
         }
     }
