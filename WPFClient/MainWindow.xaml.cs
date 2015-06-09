@@ -124,9 +124,22 @@ namespace WPFClient
             double tempHoursLoad = selected.TeacherLoad.Sum(load => load.TotalHourse);
             double tempHoursOtherLoad = selected.TeacherLoadOtherType.Sum(load => load.Total);
 
+            double tempCountBudgetLoad = selected.TeacherLoad.Sum(load => load.TotalHoursB);
+            double tempCountBudgetOtherLoad = selected.TeacherLoadOtherType.Sum(load => load.CountHoursB);
+
+            double tempCountContractLoad = selected.TeacherLoad.Sum(load => load.TotalHoursK);
+            double tempCountContractOtherLoad = selected.TeacherLoadOtherType.Sum(load => load.CountHoursC);
+
             TextBoxTotalHours.Text = Convert.ToString(tempHoursLoad + tempHoursOtherLoad);
+            TextBoxTotalB.Text = Convert.ToString(tempCountBudgetLoad + tempCountBudgetOtherLoad);
+            TextBoxTotalK.Text = Convert.ToString(tempCountContractLoad + tempCountContractOtherLoad);
+
             DataGridTeacherTotalLoad.ItemsSource = _uow.TeacherInfo.All.ToList();
         }
 
+        private void RefrehButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            DataGridTeacherTotalLoad.ItemsSource = _uow.TeacherInfo.All.ToList();
+        }
     }
 }

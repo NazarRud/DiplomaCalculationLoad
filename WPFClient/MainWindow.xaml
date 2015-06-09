@@ -56,7 +56,12 @@
                 <DataGridTextColumn Header="Загалом" Width="60" Binding="{Binding Path=Total}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Загальна кількість годин" HorizontalAlignment="Left" Margin="10,375,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="TextBoxTotalHours" HorizontalAlignment="Left" Height="23" Margin="10,401,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="144"/>
+        <Label Content="Загальна кількість годин" HorizontalAlignment="Left" Margin="682,375,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TextBoxTotalHours" HorizontalAlignment="Left" Height="23" Margin="682,401,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="144"/>
+        <Label Content="Загалом годин Бюджет" HorizontalAlignment="Left" Margin="360,375,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TextBoxTotalB" HorizontalAlignment="Left" Height="23" Margin="360,401,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="144"/>
+        <Label Content="Загалом годин Контракт" HorizontalAlignment="Left" Margin="519,375,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TextBoxTotalK" HorizontalAlignment="Left" Height="23" Margin="519,401,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="144"/>
+        <Button Name="RefrehButton" Click="RefrehButton_OnClick" Content="Оновити список викладачів" HorizontalAlignment="Left" Margin="10,380,0,0" VerticalAlignment="Top" Width="200"/>
     </Grid>
 </Window>

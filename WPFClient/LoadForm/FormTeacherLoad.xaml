@@ -6,7 +6,8 @@
         <DataGrid Name="DataGridTeacherLoad" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Height="357" Width="1262">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Викладач" Width="150" Binding="{Binding Path=TeacherInfo.Initials}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дисц." Width="60" Binding="{Binding Path=Subject.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дисц." Width="60" Binding="{Binding Path=Subject.ShortName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Підгруппа" Width="60" Binding="{Binding Path=SubGroup.Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Лек.Б" Width="40" Binding="{Binding Path=LectionB}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Лек.К" Width="40" Binding="{Binding Path=LectionK}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Пр.Б" Width="40" Binding="{Binding Path=PracticeB}"></DataGridTextColumn>
@@ -34,6 +35,7 @@
                 <DataGridTextColumn Header="Всього.Б" Width="60" Binding="{Binding Path=TotalHoursB}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Всього.К" Width="60" Binding="{Binding Path=TotalHoursK}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Всього" Width="55" Binding="{Binding Path=TotalHourse}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Потік" Width="55" Binding="{Binding Path=Subject.Flow.Name}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Button Name="AddButton" Content="Додати" Click="AddButton_OnClick" HorizontalAlignment="Left" Margin="10,425,0,0" VerticalAlignment="Top" Width="75"/>

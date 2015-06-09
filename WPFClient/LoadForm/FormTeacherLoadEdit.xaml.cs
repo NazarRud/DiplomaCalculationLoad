@@ -75,97 +75,129 @@ namespace WPFClient.LoadForm
         private void CalculateButton_OnClick(object sender, RoutedEventArgs e)
         {
             
-
             var subject = ComboBoxSubject.SelectedItem as Subject;
             var teacher = ComboBoxTeacher.SelectedItem as TeacherInfo;
             var subGroup = DataGridSubGroup.SelectedItem as SubGroup;
 
             int tempStudCountB = Convert.ToInt32(TextBoxStudCountB.Text);
+            int tempStudCountK = Convert.ToInt32(TextBoxStudCountK.Text);
+            int tempStudCountBk = Convert.ToInt32(TextBoxStudCountBk.Text);
+            int tempStudCountKk = Convert.ToInt32(TextBoxStudCountKk.Text);
 
             int lectionVb = 0;
-            if (_selectedFlow.EduType == EducationType.Бюджет)
-                lectionVb = Convert.ToInt32(TextBoxLectionV.Text);
-
-            int practiceVb = Convert.ToInt32(TextBoxPracticeV.Text) * Convert.ToInt32(TextBoxSubGroupPract.Text);
-            int labVb = Convert.ToInt32(TextBoxLabV.Text) * Convert.ToInt32(TextBoxSubGroupLab.Text);
-            double examVb = 0.33 * Convert.ToInt32(TextBoxExamV.Text) * tempStudCountB;
-
-            int tempCreditVb = Convert.ToInt32(TextBoxCreditV.Text);
-            int tempAcademBb = Convert.ToInt32(TextBoxAcademB.Text);
-
-            double creditVb = 2 * tempAcademBb * tempCreditVb;
-            creditVb = Math.Round(creditVb, 2);
-
-
-            double testVb = 0.25 * Convert.ToInt32(TextBoxTestV.Text) * tempStudCountB;
-            int courseProjectVb = Convert.ToInt32(TextBoxCourseProjectV.Text) * tempStudCountB;
-            int courseWorkVb = Convert.ToInt32(TextBoxCourseWorkV.Text) * tempStudCountB;
-            double rgrVb = 0.5 * Convert.ToInt32(TextBoxRgrV.Text) * tempStudCountB;
-            double dkrVb = 0.33 * Convert.ToInt32(TextBoxDkrV.Text) * tempStudCountB;
-            double summeryVb = 0.25 * Convert.ToInt32(TextBoxSummeryV.Text) * tempStudCountB;
-
+            double examVb = 0;
+            int practiceVb = 0;
+            int labVb = 0;
+            int tempCreditVb = 0;
+            int tempAcademBb = 0;
+            double creditVb = 0;
+            double testVb = 0;
+            int courseProjectVb = 0;
+            int courseWorkVb = 0;
+            double rgrVb = 0;
+            double dkrVb = 0;
+            double summeryVb = 0;
             double consultationVb = 0;
-            if (_selectedFlow.EduForm == EducationForm.Денна)
-            {
-                consultationVb = 2 * Convert.ToInt32(TextBoxExamV.Text) * tempAcademBb +
-                                0.06 * Convert.ToInt32(TextBoxAmountHours.Text) * (tempStudCountB) / 25;
-            }
-            else if (_selectedFlow.EduForm == EducationForm.Заочна)
-            {
-                consultationVb = 2 * Convert.ToInt32(TextBoxExamV.Text) * tempAcademBb +
-                0.12 * Convert.ToInt32(TextBoxAmountHours.Text) * (tempStudCountB) / 25;
-
-            }
-
-            consultationVb = Math.Round(consultationVb, 2);
-           
-            double totalHorseB = lectionVb + practiceVb + labVb + examVb + creditVb + testVb + courseProjectVb + courseWorkVb + rgrVb + dkrVb + summeryVb + consultationVb;
-            
-            //------------------------------------------------------------------------------------------
-
-            int tempStudCountK = Convert.ToInt32(TextBoxStudCountK.Text);
 
             int lectionVk = 0;
-            if (_selectedFlow.EduType == EducationType.Контракт)
-                lectionVk = Convert.ToInt32(TextBoxLectionVk.Text);
-
-            int practiceVk = Convert.ToInt32(TextBoxPracticeVk.Text) * Convert.ToInt32(TextBoxSubGroupPractk.Text);
-            int labVk = Convert.ToInt32(TextBoxLabVk.Text) * Convert.ToInt32(TextBoxSubGroupLabk.Text);
-            double examVk = 0.33 * Convert.ToInt32(TextBoxExamVk.Text) * tempStudCountK;
-
-
-            int tempCreditVk = Convert.ToInt32(TextBoxCreditVk.Text);
-            int tempAcademKk = Convert.ToInt32(TextBoxAcademKk.Text);
-
-            double creditVk = 2 * tempAcademKk * tempCreditVk;
-            creditVk = Math.Round(creditVk, 2);
-
-            double testVk = 0.25 * Convert.ToInt32(TextBoxTestVk.Text) * tempStudCountK;
-            int courseProjectVk = Convert.ToInt32(TextBoxCourseProjectVk.Text) * tempStudCountK;
-            int courseWorkVk = Convert.ToInt32(TextBoxCourseWorkVk.Text) * tempStudCountK;
-            double rgrVk = 0.5 * Convert.ToInt32(TextBoxRgrVk.Text) * tempStudCountK;
-            double dkrVk = 0.33 * Convert.ToInt32(TextBoxDkrVk.Text) * tempStudCountK;
-            double summeryVk = 0.25 * Convert.ToInt32(TextBoxSummeryVk.Text) * tempStudCountK;
-
+            double examVk = 0;
+            int practiceVk = 0;
+            int labVk = 0;
+            int tempCreditVk = 0;
+            int tempAcademKk = 0;
+            double creditVk = 0;
+            double testVk = 0;
+            int courseProjectVk = 0;
+            int courseWorkVk = 0;
+            double rgrVk = 0;
+            double dkrVk = 0;
+            double summeryVk = 0;
             double consultationVk = 0;
-            if (_selectedFlow.EduForm == EducationForm.Денна)
+
+            tempCreditVb = Convert.ToInt32(TextBoxCreditV.Text);
+            tempAcademBb = Convert.ToInt32(TextBoxAcademB.Text);
+
+
+            if (CheckBoxLector.IsChecked == true || CheckBoxHoursLector.IsChecked == true)
             {
-                consultationVk = 2 * Convert.ToInt32(TextBoxExamVk.Text) * tempAcademKk +
-                                0.06 * Convert.ToInt32(TextBoxAmountHoursK.Text) * (tempStudCountK) / 25;
+                if (_selectedFlow.EduType == EducationType.Бюджет)
+                    lectionVb = Convert.ToInt32(TextBoxLectionV.Text);
+
+                if (_selectedFlow.EduType == EducationType.Контракт)
+                    lectionVk = Convert.ToInt32(TextBoxLectionVk.Text);
+
+                examVb = 0.33 * Convert.ToInt32(TextBoxExamV.Text) * tempStudCountB;
+                examVk = 0.33 * Convert.ToInt32(TextBoxExamVk.Text) * tempStudCountK;
+
+                creditVb = 2 * tempAcademBb * tempCreditVb;
+                creditVb = Math.Round(creditVb, 2);
+
+                creditVk = 2 * tempAcademKk * tempCreditVk;
+                creditVk = Math.Round(creditVk, 2);
+
             }
-            else if (_selectedFlow.EduForm == EducationForm.Заочна)
+
+
+            if(CheckBoxHoursLector.IsChecked == true || CheckBoxLector.IsChecked == false)
             {
-                consultationVk = 2 * Convert.ToInt32(TextBoxExamV.Text) * tempAcademKk +
-                0.12 * Convert.ToInt32(TextBoxAmountHours.Text) * (tempStudCountK) / 25;
+                practiceVb = Convert.ToInt32(TextBoxPracticeV.Text) * Convert.ToInt32(TextBoxSubGroupPract.Text);
+                labVb = Convert.ToInt32(TextBoxLabV.Text) * Convert.ToInt32(TextBoxSubGroupLab.Text);
 
+                testVb = 0.25 * Convert.ToInt32(TextBoxTestV.Text) * tempStudCountB;
+                courseProjectVb = Convert.ToInt32(TextBoxCourseProjectV.Text) * tempStudCountB;
+                courseWorkVb = Convert.ToInt32(TextBoxCourseWorkV.Text) * tempStudCountB;
+                rgrVb = 0.5 * Convert.ToInt32(TextBoxRgrV.Text) * tempStudCountB;
+                dkrVb = 0.33 * Convert.ToInt32(TextBoxDkrV.Text) * tempStudCountB;
+                summeryVb = 0.25 * Convert.ToInt32(TextBoxSummeryV.Text) * tempStudCountB;
+
+                if (_selectedFlow.EduForm == EducationForm.Денна)
+                {
+                    consultationVb = 2 * Convert.ToInt32(TextBoxExamV.Text) * tempAcademBb +
+                                    0.06 * Convert.ToInt32(TextBoxAmountHours.Text) * (tempStudCountB) / 25;
+                }
+                else if (_selectedFlow.EduForm == EducationForm.Заочна)
+                {
+                    consultationVb = 2 * Convert.ToInt32(TextBoxExamV.Text) * tempAcademBb +
+                    0.12 * Convert.ToInt32(TextBoxAmountHours.Text) * (tempStudCountB) / 25;
+
+                }
+
+                consultationVb = Math.Round(consultationVb, 2);
+
+                //-------------------------------------------------------------------------------------
+
+                practiceVk = Convert.ToInt32(TextBoxPracticeVk.Text) * Convert.ToInt32(TextBoxSubGroupPractk.Text);
+                labVk = Convert.ToInt32(TextBoxLabVk.Text) * Convert.ToInt32(TextBoxSubGroupLabk.Text);
+
+
+                tempCreditVk = Convert.ToInt32(TextBoxCreditVk.Text);
+                tempAcademKk = Convert.ToInt32(TextBoxAcademKk.Text);
+
+
+                testVk = 0.25 * Convert.ToInt32(TextBoxTestVk.Text) * tempStudCountKk;
+                courseProjectVk = Convert.ToInt32(TextBoxCourseProjectVk.Text) * tempStudCountKk;
+                courseWorkVk = Convert.ToInt32(TextBoxCourseWorkVk.Text) * tempStudCountKk;
+                rgrVk = 0.5 * Convert.ToInt32(TextBoxRgrVk.Text) * tempStudCountKk;
+                dkrVk = 0.33 * Convert.ToInt32(TextBoxDkrVk.Text) * tempStudCountKk;
+                summeryVk = 0.25 * Convert.ToInt32(TextBoxSummeryVk.Text) * tempStudCountKk;
+
+                if (_selectedFlow.EduForm == EducationForm.Денна)
+                {
+                    consultationVk = 2 * Convert.ToInt32(TextBoxExamVk.Text) * tempAcademKk +
+                                    0.06 * Convert.ToInt32(TextBoxAmountHoursK.Text) * (tempStudCountKk) / 25;
+                }
+                else if (_selectedFlow.EduForm == EducationForm.Заочна)
+                {
+                    consultationVk = 2 * Convert.ToInt32(TextBoxExamV.Text) * tempAcademKk +
+                    0.12 * Convert.ToInt32(TextBoxAmountHours.Text) * (tempStudCountKk) / 25;
+
+                }
+
+                consultationVk = Math.Round(consultationVk, 2);
             }
 
-            consultationVk = Math.Round(consultationVk, 2);
-
+            double totalHorseB = lectionVb + practiceVb + labVb + examVb + creditVb + testVb + courseProjectVb + courseWorkVb + rgrVb + dkrVb + summeryVb + consultationVb;
             double totalHourseK = lectionVk + practiceVk + labVk + examVk + creditVk + testVk + courseProjectVk + courseWorkVk + rgrVk + dkrVk + summeryVk + consultationVk;
-
-
-            //------------------------------------------------------------------------------------------
 
             var teampTeacherLoad = new TeacherLoad
             {
@@ -205,6 +237,35 @@ namespace WPFClient.LoadForm
 
             DataGridTeacherLoad.ItemsSource = null;
             DataGridTeacherLoad.ItemsSource = _listTeacherLoad;
+
+            TotalLekB.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.LectionB));
+            TotalLekK.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.LectionK));
+            TotalPracticeB.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.PracticeB));
+            TotalPracticeK.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.PracticeK));
+            TotalLabB.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.LabB));
+            TotalLabK.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.LabK));
+            TotalExamB.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.ExamB));
+            TotalExamK.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.ExamK));
+            TotalCreditB.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.CreditB));
+            TotalCreditK.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.CreditK));
+            TotalTestB.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.TestB));
+            TotalTestK.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.TestK));
+            TotalCourseProjectB.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.CourseProjectB));
+            TotalCourseProjectK.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.CourseProjectK));
+            TotalCourseWorkB.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.CourseWorkB));
+            TotalCourseWorkK.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.CourseWorkK));
+            TotalRgrB.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.RgrB));
+            TotalRgrK.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.RgrK));
+            TotalDkrB.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.DkrB));
+            TotalDkrK.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.DkrK));
+            TotalSummeryB.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.SummeryB));
+            TotalSummeryK.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.SummeryK));
+            TotalСonsultationB.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.СonsultationB));
+            TotalСonsultationK.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.СonsultationK));
+            TotalTotalHoursB.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.TotalHoursB));
+            TotalTotalHoursK.Text = Convert.ToString(_listTeacherLoad.Sum(l => l.TotalHoursK));
+
+
         }
 
         private void SaveButton_OnClick(object sender, RoutedEventArgs e)

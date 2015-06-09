@@ -57,5 +57,13 @@
         <Label Content="Кільк. груп К" HorizontalAlignment="Left" Margin="385,163,0,0" VerticalAlignment="Top"/>
         <TextBox Name="TextBoxCountContractGroup" Text="0" HorizontalAlignment="Left" Height="23" Margin="385,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button Name="ClearLitBox" Content="Очистити список викладачів" Click="ClearLitBox_OnClick" HorizontalAlignment="Left" Margin="389,420,0,0" VerticalAlignment="Top" Width="183"/>
+        <Label Content="Кільк.Б." HorizontalAlignment="Left" Margin="910,217,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TextBoxCountB" HorizontalAlignment="Left" Height="23" Margin="910,243,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="70"/>
+        <Label Content="Кільк.К." HorizontalAlignment="Left" Margin="910,266,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TextBoxCountK" HorizontalAlignment="Left" Height="23" Margin="910,290,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="70"/>
+        <Label Content="Годин Б." HorizontalAlignment="Left" Margin="910,313,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TextBoxCountHoursB" HorizontalAlignment="Left" Height="23" Margin="910,338,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="70"/>
+        <Label Content="Годин К." HorizontalAlignment="Left" Margin="910,361,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TextBoxCountHoursK" HorizontalAlignment="Left" Height="23" Margin="910,387,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="70"/>
     </Grid>
 </Window>

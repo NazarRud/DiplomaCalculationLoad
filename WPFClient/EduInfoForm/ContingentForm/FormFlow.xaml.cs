@@ -74,6 +74,13 @@ namespace WPFClient.EduInfoForm.ContingentForm
                 return;
             }
 
+            var list = _uow.SubGroup.All.Where(s => s.Flow.Id == selected.Id);
+            foreach (var subGroup in list)
+            {
+                _uow.SubGroup.Delete(subGroup.Id);
+            }
+            _uow.Save();
+
             _uow.Flow.Delete(selected.Id);
             _uow.Save();
 

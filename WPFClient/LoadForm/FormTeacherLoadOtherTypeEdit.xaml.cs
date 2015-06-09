@@ -97,6 +97,8 @@ namespace WPFClient.LoadForm
                 _tempList.Add(tempLoad);
             }
 
+            TotalSum(_tempList);
+
             DataGridTeacherLoadOtherType.ItemsSource = null;
             DataGridTeacherLoadOtherType.ItemsSource = _tempList;
             _otherTypes.RemoveAll(i => i.Id >= 0);
@@ -129,6 +131,8 @@ namespace WPFClient.LoadForm
                 loadList.Add(loadOtherType);
 
             }
+
+            TotalSum(loadList);
 
             DataGridTeacherLoadOtherType.ItemsSource = null;
             DataGridTeacherLoadOtherType.ItemsSource = loadList;
@@ -167,6 +171,14 @@ namespace WPFClient.LoadForm
         {
             ListBoxTeacher.ItemsSource = null;
             _teacherInfos.RemoveAll(i => i.Id >= 0);
+        }
+
+        private void TotalSum(List<TeacherLoadOtherType> loadOtherTypes)
+        {
+            TextBoxCountB.Text = Convert.ToString(loadOtherTypes.Sum(l => l.CountStudentB));
+            TextBoxCountK.Text = Convert.ToString(loadOtherTypes.Sum(l => l.CountStudentK));
+            TextBoxCountHoursB.Text = Convert.ToString(loadOtherTypes.Sum(l => l.CountHoursB));
+            TextBoxCountHoursK.Text = Convert.ToString(loadOtherTypes.Sum(l => l.CountHoursC));
         }
     }
 }
