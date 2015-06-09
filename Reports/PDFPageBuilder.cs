@@ -24,7 +24,7 @@ namespace Reports
         protected Column column;
         protected Row row;
         protected Cell cell;
-        protected ICollection renderBody;
+        protected ArrayList renderBody;
 
         public PDFPageBuilder()
         {

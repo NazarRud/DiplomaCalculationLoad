@@ -13,13 +13,13 @@ namespace Reports.Public
 {
     public class ReportsCreator
     {
-        internal static ICollection renderBody { get; set; }
+        internal static ArrayList renderBody { get; set; }
         public static string CurrentYear { get; set; }
         private Report report;
 
-        public void CreateK2(string teachersName, ICollection collection)
+        public void CreateK2(string teachersName, ArrayList collection)
         {
-            renderBody = collection;
+            renderBody = collection; 
             report = new K2Report(new PDFSaver("(" + teachersName + ")_K2_Page_4"), new K2Page4BuilderPDF());
             report.CreateReport();
             report = new K2Report(new PDFSaver("(" + teachersName + ")_K2_Page_5"), new K2Page5BuilderPDF());
@@ -34,12 +34,12 @@ namespace Reports.Public
             report.CreateReport();
         }
 
-        public Task CreateK2Async(string teachersName, ICollection collection)
+        public Task CreateK2Async(string teachersName, ArrayList collection)
         {
             return Task.Factory.StartNew(() => CreateK2(teachersName, collection));            
         }
 
-        public void CreateK4(EduType type, ICollection collection)
+        public void CreateK4(EduType type, ArrayList collection)
         {
             renderBody = collection;
             if (type == EduType.Budget)
@@ -61,12 +61,12 @@ namespace Reports.Public
             }
         }
 
-        public Task CreateK4Async(EduType type, ICollection collection)
+        public Task CreateK4Async(EduType type, ArrayList collection)
         {
             return Task.Factory.StartNew(() => CreateK4(type, collection));
         }
 
-        public void CreateK5(string term, EduType type, ICollection collection)
+        public void CreateK5(string term, EduType type, ArrayList collection)
         {
             renderBody = collection;
             if (type == EduType.Budget)
@@ -88,67 +88,67 @@ namespace Reports.Public
             }
         }
 
-        public Task CreateK5Async(string term, EduType type, ICollection collection)
+        public Task CreateK5Async(string term, EduType type, ArrayList collection)
         {
             return Task.Factory.StartNew(() => CreateK5(term, type, collection));
         }
 
-        public void CreateLoadDistribution(string discipline, ICollection collection)
+        public void CreateLoadDistribution(string discipline, ArrayList collection)
         {
             renderBody = collection;
             report = new OtherReport(new PDFSaver("LD_(" + discipline + ")"), new LoadDistributionBuilderPDF(discipline));
             report.CreateReport();
         }
 
-        public Task CreateLoadDistributionAsync(string discipline, ICollection collection)
+        public Task CreateLoadDistributionAsync(string discipline, ArrayList collection)
         {
             return Task.Factory.StartNew(() => CreateLoadDistribution(discipline, collection));    
         }
 
-        public void CreatePlanAll(ICollection collection)
+        public void CreatePlanAll(string teacher, ArrayList collection)
         {
             renderBody = collection;
-            report = new OtherReport(new PDFSaver("Plan_all"), new PlanAllBuilderPDF());
+            report = new OtherReport(new PDFSaver("Plan_all_(" + teacher + ")"), new PlanAllBuilderPDF(teacher));
             report.CreateReport();
         }
 
-        public Task CreatePlanAllAsync(ICollection collection)
+        public Task CreatePlanAllAsync(string teacher, ArrayList collection)
         {
-            return Task.Factory.StartNew(() => CreatePlanAll(collection));    
+            return Task.Factory.StartNew(() => CreatePlanAll(teacher, collection));    
         }
 
-        public void CreatePlanAllTotal(ICollection collection)
+        public void CreatePlanAllTotal(ArrayList collection)
         {
             renderBody = collection;
             report = new OtherReport(new PDFSaver("Plan_All_Total_Results"), new PlanAllOnlyTotalResultsBuilderPDF());
             report.CreateReport();
         }
 
-        public Task CreatePlanAllTotalAsync(ICollection collection)
+        public Task CreatePlanAllTotalAsync(ArrayList collection)
         {
             return Task.Factory.StartNew(() => CreatePlanAllTotal(collection));            
         }
 
-        public void CreatePlanAllDiscipline(ICollection collection)
+        public void CreatePlanAllDiscipline(ArrayList collection)
         {
             renderBody = collection;
             report = new OtherReport(new PDFSaver("Plan_All_Discipline"), new PlanAllDisciplineBuilderPDF());
             report.CreateReport();
         }
 
-        public Task CreatePlanAllDisciplineAsync(ICollection collection)
+        public Task CreatePlanAllDisciplineAsync(ArrayList collection)
         {
             return Task.Factory.StartNew(() => CreatePlanAllDiscipline(collection));            
         }
 
-        public void CreatePaymentSum(bool isFull, ICollection collection)
+        public void CreatePaymentSum(bool isFull, ArrayList collection)
         {
             renderBody = collection;
             report = new OtherReport(new PDFSaver("Payment_Sum"), new PaymentSumBuilderPDF(isFull));
             report.CreateReport();
         }
 
-        public Task CreatePaymentSumAsync(bool isFull, ICollection collection)
+        public Task CreatePaymentSumAsync(bool isFull, ArrayList collection)
         {
             return Task.Factory.StartNew(() => CreatePaymentSum(isFull, collection)); 
         }

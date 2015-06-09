@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,8 @@ using MigraDoc.Rendering;
 using MigraDoc.DocumentObjectModel.Tables;
 
 using MigraDoc.DocumentObjectModel.Shapes;
+using Data.Entity;
+using Data.Entity.Enum;
 
 namespace Reports.ReportPages
 {
@@ -124,7 +127,18 @@ namespace Reports.ReportPages
 
         public override void CreateBody()
         {
-            //throw new NotImplementedException();
+            List<Subject> subjectList = renderBody[4] as List<Subject>;
+            List<TeacherInfo> teachersList = renderBody[7] as List<TeacherInfo>;
+            var q = subjectList.Select(sl => new { Name = sl.Name, Semestr = sl.Semestr, Flow = sl.Flow }).Where(sem => Enum.GetName(typeof(Semestr),sem.Semestr) == Enum.GetName(typeof(Semestr), Semestr.I)).ToList();
+            for (int i = 0; i < 2; i++)
+            {
+                
+                //cell = column[i + 5].Row[1];
+                //cell.AddParagraph(q[i].Name).Format.Alignment = ParagraphAlignment.Center;
+                //cell = column[i + 5].Row[2];
+                //cell.AddParagraph(q[i].Flow.Group.ToList()[i].Name).Format.Alignment = ParagraphAlignment.Center;
+                //(renderBody. as Enumerable)[i].Name
+            }
         }
 
         public override void CreateAdditionalElement()
@@ -196,7 +210,7 @@ namespace Reports.ReportPages
 
             CreateHeader();
             CreateAdditionalElement();
-            //CreateBody();
+            CreateBody();
             section.Add(table);
 
             return document;

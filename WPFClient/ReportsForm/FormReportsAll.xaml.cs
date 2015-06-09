@@ -28,6 +28,7 @@ namespace WPFClient.ReportsForm
         private ReportsCreator reportsCreator;
         private readonly IUow _uow;
         private readonly App _app = Application.Current as App;
+        private ArrayList listOfTables;
 
         public FormReportsAll()
         {
@@ -36,7 +37,25 @@ namespace WPFClient.ReportsForm
             reportsCreator = new ReportsCreator();
             ReportsCreator.CurrentYear = FileRes.CurrentYear;
             InitCombobox();
-            TeacherCombobox.ItemsSource = _uow.TeacherInfo.All.Select(teacher => teacher.LastName + " " + teacher.Initials).ToList();
+            AddTables();
+            TeacherCombobox.ItemsSource = _uow.TeacherInfo.All.Select(teacher => teacher.Initials).ToList();
+        }
+
+        private void AddTables()
+        {
+            listOfTables = new ArrayList();
+            listOfTables.Add(_uow.Flow.All.ToList());                   //0
+            listOfTables.Add(_uow.Faculty.All.ToList());                //1
+            listOfTables.Add(_uow.Cathedra.All.ToList());               //2
+            listOfTables.Add(_uow.Group.All.ToList());                  //3
+            listOfTables.Add(_uow.SubGroup.All.ToList());               //4
+            listOfTables.Add(_uow.Subject.All.ToList());                //5
+            listOfTables.Add(_uow.SubjectInfoB.All.ToList());           //6
+            listOfTables.Add(_uow.SubjectInfoK.All.ToList());           //7
+            listOfTables.Add(_uow.TeacherInfo.All.ToList());            //8
+            listOfTables.Add(_uow.TeacherLoad.All.ToList());            //9
+            listOfTables.Add(_uow.TeacherLoadOtherType.All.ToList());   //10
+            listOfTables.Add(_uow.OtherType.All.ToList());              //11
         }
 
         private void InitCombobox()
@@ -72,7 +91,7 @@ namespace WPFClient.ReportsForm
                 if (TeacherCombobox.SelectedItem != null)
                 {
                     ProgressBar.IsIndeterminate = true;
-                    Task task = reportsCreator.CreateK2Async(TeacherCombobox.SelectedItem.ToString(), null);
+                    Task task = reportsCreator.CreateK2Async(TeacherCombobox.SelectedItem.ToString(), listOfTables );
                     task.ContinueWith(t => ProgressBar.IsIndeterminate = false, TaskScheduler.FromCurrentSynchronizationContext());
                 }
                 else
@@ -88,9 +107,16 @@ namespace WPFClient.ReportsForm
             }
             else if (PlanAll.IsChecked == true)
             {
-                ProgressBar.IsIndeterminate = true;
-                Task task = reportsCreator.CreatePlanAllAsync(null);
-                task.ContinueWith(t => ProgressBar.IsIndeterminate = false, TaskScheduler.FromCurrentSynchronizationContext());
+                if (TeacherCombobox.SelectedItem != null)
+                {
+                    ProgressBar.IsIndeterminate = true;
+                    Task task = reportsCreator.CreatePlanAllAsync(TeacherCombobox.SelectedItem.ToString(), listOfTables);
+                    task.ContinueWith(t => ProgressBar.IsIndeterminate = false, TaskScheduler.FromCurrentSynchronizationContext());
+                }
+                else
+                {
+                    MessageBox.Show("Виберіть викладача!");
+                }
             }
             else if (PaymentSum.IsChecked == true)
             {
@@ -185,7 +211,7 @@ namespace WPFClient.ReportsForm
         private void CreateOtherButton_Click(object sender, RoutedEventArgs e)
         {
             ProgressBar.IsIndeterminate = true;
-            Task task = reportsCreator.CreateLoadDistributionAsync(DisciplineCombobox.SelectedValue.ToString(), _uow.TeacherInfo.All.Select(teacher => teacher.LastName + " " + teacher.Initials).ToList());
+            Task task = reportsCreator.CreateLoadDistributionAsync(DisciplineCombobox.SelectedValue.ToString(), null);
             task.ContinueWith(t => ProgressBar.IsIndeterminate = false, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
