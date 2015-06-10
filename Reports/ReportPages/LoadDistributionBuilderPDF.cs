@@ -10,6 +10,8 @@ using PdfSharp.Pdf;
 using MigraDoc.Rendering;
 using MigraDoc.DocumentObjectModel.Tables;
 using Reports.Public;
+using Data.Entity;
+using Data.Entity.Enum;
 
 namespace Reports.ReportPages
 {
@@ -121,13 +123,44 @@ namespace Reports.ReportPages
             cell.Format.Font.Bold = true;
             cell.Format.Font.Color = Colors.Blue;
             cell.MergeRight = 6;
+            #region reg
+            //List<Subject> subjectList = renderBody[4] as List<Subject>;
+            //var q = subjectList.Select(sl =>
+            //    new { Name = sl.Name, 
+            //        EduForm = sl.Flow.EduForm, 
+            //        Flow = sl.Flow.Name,
+            //        Semestr = sl.Semestr,
+            //        Group = sl.Flow.Group.Select(gr => 
+            //            new { Course = gr.Course,
+            //                  Cathedra = gr.Cathedra.TeacherInfo.Select(ti => 
+            //                      new { LastName = ti.LastName, 
+            //                          Name = ti.Name, 
+            //                          MiddleName = ti.MiddleName,
+            //                          TeacherLoadOtherType = ti.TeacherLoadOtherType.Select(tlot => 
+            //                              new { TypeOfWork = tlot.OtherType}),
+            //                            TeachersLoad = ti.TeacherLoad.Select(tl => 
+            //                                new { LectionB = tl.LectionB,
+            //                                    LectionK = tl.LectionK                                                
+            //                                })
+            //                      })
+            //            })
+
+            //    }).Where(item => Enum.GetName(typeof(Semestr), item.Semestr) == Enum.GetName(typeof(Semestr), Semestr.I)).ToList();
+            ////var q2 = q.Where(item => item.Group.)
 
             for (int i = 0; i < 19; i++)
             {
                 row = table.AddRow();
                 row.VerticalAlignment = VerticalAlignment.Center;
-            }
+                //cell = row.Cells[0];
+                //cell.AddParagraph(q[i].EduForm.ToString()).Format.Alignment = ParagraphAlignment.Center;
+                //cell = row.Cells[2];
+                //cell.AddParagraph(q[i].Name.ToString()).Format.Alignment = ParagraphAlignment.Center;
+                //cell = row.Cells[3];
+                //cell.AddParagraph(q[i].Flow.ToString()).Format.Alignment = ParagraphAlignment.Center;
 
+            }
+            #endregion
             row = table.AddRow();
             row.VerticalAlignment = VerticalAlignment.Center;
             row.Borders.Left.Width = 0;   /////////////////////
