@@ -78,20 +78,20 @@ namespace WPFClient.CalculateTypeWork
                         {
                             case SubTypeWork.бакалаврів:
                                 {
-                                    totalBudget = 16.5 * countStudB;
-                                    totalContract = 16.5 * countStudC;
-                                } break;
-
-                            case SubTypeWork.спеціалістів:
-                                {
                                     totalBudget = 17 * countStudB;
                                     totalContract = 17 * countStudC;
                                 } break;
 
+                            case SubTypeWork.спеціалістів:
+                                {
+                                    totalBudget = 19.5 * countStudB;
+                                    totalContract = 19.5 * countStudC;
+                                } break;
+
                             case SubTypeWork.магістрів:
                                 {
-                                    totalBudget = 28 * countStudB;
-                                    totalContract = 28 * countStudC;
+                                    totalBudget = 29 * countStudB;
+                                    totalContract = 29 * countStudC;
                                 } break;
                             default:
                                 {
@@ -107,8 +107,8 @@ namespace WPFClient.CalculateTypeWork
                         {
                             case SubTypeWork.бакалаврів:
                                 {
-                                    totalBudget = 3 * countStudB;
-                                    totalContract = 3 * countStudC;
+                                    totalBudget = 4 * countStudB;
+                                    totalContract = 4 * countStudC;
                                 } break;
                             case SubTypeWork.спеціалістів:
                                 {
@@ -117,8 +117,8 @@ namespace WPFClient.CalculateTypeWork
                                 } break;
                             case SubTypeWork.магістрів:
                                 {
-                                    totalBudget = 4 * countStudB;
-                                    totalContract = 4 * countStudC;
+                                    totalBudget = 5 * countStudB;
+                                    totalContract = 5 * countStudC;
                                 } break;
                             default:
                                 {

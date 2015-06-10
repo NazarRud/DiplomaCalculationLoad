@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="FormTeachersSalary" Height="363.396" Width="867.434" ResizeMode="CanMinimize" Loaded="FormTeachersSalary_OnLoaded">
     <Grid>
-        <DataGrid Name="DataGridPayment" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="261" Width="516">
+        <DataGrid Name="DataGridPayment" IsReadOnly="True" SelectionChanged="DataGridPayment_OnSelectionChanged" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="261" Width="516">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Посада" Width="200" Binding="{Binding Path=Appointment}" />
                 <DataGridTextColumn Header="Найменування посад" Width="200" Binding="{Binding Path=AppointmentSub}" />

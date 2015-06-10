@@ -110,7 +110,8 @@ namespace WPFClient
 
         private void FormTeachersAllowance_MenuItem_Click(object sender, RoutedEventArgs e)
         {
-
+            FormTeachersSalary formTeachersSalary = new FormTeachersSalary();
+            formTeachersSalary.ShowDialog();
         }
 
         private void DataGridTeacherTotalLoad_OnSelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -11,7 +11,7 @@
         <TextBox Name="TextBoxSalary" HorizontalAlignment="Left" Height="23" Margin="10,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
        
         <Button Name="SaveButton" Content="Зберегти" Click="SaveButton_OnClick" HorizontalAlignment="Left" Margin="10,176,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Name="CancleButton" Content="Видалити" Click="CancleButton_OnClick" HorizontalAlignment="Left" Margin="639,176,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="CancleButton" Content="Скасувати" Click="CancleButton_OnClick" HorizontalAlignment="Left" Margin="639,176,0,0" VerticalAlignment="Top" Width="75"/>
         <DataGrid Name="DataGridPaymentForYears" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Left" Margin="410,36,0,0" VerticalAlignment="Top" Height="135" Width="304">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Кількість років" Width="150" Binding="{Binding Path=YearsCount}" />

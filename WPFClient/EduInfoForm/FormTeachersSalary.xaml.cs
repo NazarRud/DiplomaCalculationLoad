@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using Data.Entity;
 using Data.Repository;
 
@@ -76,6 +77,13 @@ namespace WPFClient.EduInfoForm
             _uow.Save();
 
             DataGridPayment.ItemsSource = _uow.TeacherInfo.All.ToList();
+        }
+
+        private void DataGridPayment_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selected = DataGridPayment.SelectedItem as Payment;
+            if(selected == null) return;
+            DataGridPaymentForYears.ItemsSource = selected.PaymentForYearses;
         }
     }
 }
