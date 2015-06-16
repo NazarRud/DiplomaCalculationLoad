@@ -80,6 +80,7 @@
     <Compile Include="LoadForm\FormTeacherLoadOtherTypeEdit.xaml.cs">
       <DependentUpon>FormTeacherLoadOtherTypeEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\ReportK2.cs" />
     <Compile Include="ReportsForm\FormReportsAll.xaml.cs">
       <DependentUpon>FormReportsAll.xaml</DependentUpon>
     </Compile>

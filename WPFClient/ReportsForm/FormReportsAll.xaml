@@ -1,17 +1,16 @@
 ﻿<Window x:Class="WPFClient.ReportsForm.FormReportsAll"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Формування звітів" Height="384.181" Width="323" ResizeMode="NoResize" 
-        WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="Формування звітів" Height="589.181" Width="1260.5" ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen">
     <Grid Margin="0">
-        <TabControl HorizontalAlignment="Left" Height="331" VerticalAlignment="Top" Width="323" Name="ReportsTab" Margin="0,23,0,0">
+        <TabControl HorizontalAlignment="Left" Height="313" VerticalAlignment="Top" Width="554" Name="ReportsTab" Margin="10,10,0,0" Grid.ColumnSpan="2">
             <TabItem Header="К-2 / Нав. викл" Padding="20 0 20 0" Name="K2Tab" Height="25">
                 <Grid Background="#fff">
-                    <ComboBox HorizontalAlignment="Left" Margin="64,36,0,0" VerticalAlignment="Top" Name="TeacherCombobox"
-                              Width="193" IsEditable="True" Height="24" IsTextSearchEnabled="True" MaxDropDownHeight="200"/>
+                    <ComboBox Name="ComboBoxTeacherInfo" HorizontalAlignment="Left" Margin="64,36,0,0" VerticalAlignment="Top" Width="193" Height="24" MaxDropDownHeight="200"/>
                     <Label Content="Виберіть викладача:" HorizontalAlignment="Left" Margin="64,10,0,0" VerticalAlignment="Top"
                            Width="139" Padding="0 5 "/>
-                    <Rectangle Fill="#fff" HorizontalAlignment="Left" Height="122" Margin="10,76,0,0" Stroke="LightGray" VerticalAlignment="Top" Width="297"/>
+                    <Rectangle Fill="#fff" HorizontalAlignment="Left" Height="122" Margin="20,77,0,-52" Stroke="LightGray" VerticalAlignment="Top" Width="297"/>
                     <RadioButton Content="K-2" HorizontalAlignment="Left" Margin="21,87,0,0" 
                                  VerticalAlignment="Top" Height="24" Name="K2"/>
                     <RadioButton Content="Підсумк. звіт за всіма викл." HorizontalAlignment="Left" 
@@ -42,11 +41,11 @@
             </TabItem>
             <TabItem Header="Види навч. робіт" Padding="20 0 20 0" Height="25" Name="OtherWorkTab">
                 <Grid Background="#fff">
-                    <Label Content="Навчальна дисципліна:" HorizontalAlignment="Left" Margin="64,10,0,0" VerticalAlignment="Top" Padding="0 5 "/>
-                    <ComboBox HorizontalAlignment="Left" Margin="64,36,0,0" VerticalAlignment="Top" Width="193" Height="24" Name="DisciplineCombobox"/>
-                    <Label Content="Інші види навчальних дисциплін:" HorizontalAlignment="Left" Margin="64,76,0,0" VerticalAlignment="Top" Padding="0 5 "/>
-                    <ComboBox HorizontalAlignment="Left" Margin="64,102,0,0" VerticalAlignment="Top" Width="193" Height="24" Name="OtherDisciplineCombobox"/>
-                    <Button Content="Сформувати" HorizontalAlignment="Left" Margin="116,215,0,0" VerticalAlignment="Top" Width="105" Height="40" Click="CreateOtherButton_Click"/>
+                    <Label Content="Навчальна дисципліна:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Padding="0 5 "/>
+                    <ComboBox HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="193" Height="24" Name="DisciplineCombobox"/>
+                    <Label Content="Інші види навчальних дисциплін:" HorizontalAlignment="Left" Margin="208,10,0,0" VerticalAlignment="Top" Padding="0 5 "/>
+                    <ComboBox HorizontalAlignment="Left" Margin="208,36,0,0" VerticalAlignment="Top" Width="193" Height="24" Name="OtherDisciplineCombobox"/>
+                    <Button Content="Сформувати" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="105" Height="40" Click="CreateOtherButton_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Нав. в розрізі дисциплін" Padding="20 0 20 0" Height="25" Name="DisciplineWorkTab">
@@ -55,9 +54,37 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <ProgressBar HorizontalAlignment="Left" Height="31" Margin="0,353,0,0" VerticalAlignment="Top" Width="323" Name="ProgressBar" IsIndeterminate="False"/>
-        <Button Content="X" HorizontalAlignment="Left" Margin="290,0,0,0" VerticalAlignment="Top" Width="33" 
-                Background="White" BorderThickness="0" Click="CloseButton_Click"/>
+        <ProgressBar HorizontalAlignment="Left" Height="31" Margin="10,328,0,0" VerticalAlignment="Top" Width="554" Name="ProgressBar" IsIndeterminate="False" Grid.ColumnSpan="2"/>
+        <DataGrid Name="DataGridK2" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Left" Margin="10,364,0,0" VerticalAlignment="Top" Height="176" Width="1215">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Width="30" Binding="{Binding Path=Id}" />
+                <DataGridTextColumn Header="Дисципліна" Width="100" Binding="{Binding Path=SubjectName}" />
+                <DataGridTextColumn Header="Курс" Width="50" Binding="{Binding Path=Course}" />
+                <DataGridTextColumn Header="Форма навч." Width="80" Binding="{Binding Path=EducationForm}" />
+                <DataGridTextColumn Header="Потік/Група" Width="90" Binding="{Binding Path=FlowOrSubGroup}" />
+                <DataGridTextColumn Header="Лек.Б" Width="40" Binding="{Binding Path=TeacherLoad.LectionB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Лек.К" Width="40" Binding="{Binding Path=TeacherLoad.LectionK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Консл.Б" Width="55" Binding="{Binding Path=TeacherLoad.СonsultationB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кер.Практ." Width="75" Binding="{Binding Path=KerPrB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кер.Практ." Width="75" Binding="{Binding Path=KerPrK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кер.Бак." Width="55" Binding="{Binding Path=KerBakB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кер.Бак." Width="55" Binding="{Binding Path=KerBakK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кер.Спец." Width="65" Binding="{Binding Path=KerSpB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кер.Спец." Width="65" Binding="{Binding Path=KerSpK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кер.Маг." Width="60" Binding="{Binding Path=KerMagB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кер.Маг." Width="60" Binding="{Binding Path=KerMagK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кер.Асп." Width="55" Binding="{Binding Path=KerAspB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кер.Асп." Width="55" Binding="{Binding Path=KerAspK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Реценз." Width="55" Binding="{Binding Path=ReB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Реценз." Width="55" Binding="{Binding Path=ReK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Роб.Дек." Width="60" Binding="{Binding Path=WorkB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Роб.Дек." Width="60" Binding="{Binding Path=WorkK}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Всього Б." Width="60" Binding="{Binding Path=TotalB}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Всього К." Width="60" Binding="{Binding Path=TotalC}"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+            </DataGrid>
+        <Button Content="Button" HorizontalAlignment="Left" Click="ButtonBase_OnClick" Margin="569,328,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>

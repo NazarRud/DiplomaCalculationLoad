@@ -16,7 +16,6 @@
                     <MenuItem Header="Потік" HorizontalAlignment="Stretch" Width="Auto" Click="FormFlow_MenuItem_Click"/>
                 </MenuItem>
                 <MenuItem Header="Викладач" HorizontalAlignment="Stretch" Width="Auto" Click="FormTeachersInfo_MenuItem_Click"/>
-                <MenuItem Header="Оклад" HorizontalAlignment="Stretch" Width="Auto" Click="FormTeachersSalary_MenuItem_Click"/>
                 <MenuItem Header="Надбавка" HorizontalAlignment="Stretch" Width="Auto" Click="FormTeachersAllowance_MenuItem_Click"/>
             </MenuItem>
             <MenuItem Header="Навантаження" Width="auto" Height="25">
