@@ -124,42 +124,124 @@ namespace Reports.ReportPages
             cell.Format.Font.Color = Colors.Blue;
             cell.MergeRight = 6;
             #region reg
-            //List<Subject> subjectList = renderBody[4] as List<Subject>;
-            //var q = subjectList.Select(sl =>
-            //    new { Name = sl.Name, 
-            //        EduForm = sl.Flow.EduForm, 
-            //        Flow = sl.Flow.Name,
-            //        Semestr = sl.Semestr,
-            //        Group = sl.Flow.Group.Select(gr => 
-            //            new { Course = gr.Course,
-            //                  Cathedra = gr.Cathedra.TeacherInfo.Select(ti => 
-            //                      new { LastName = ti.LastName, 
-            //                          Name = ti.Name, 
-            //                          MiddleName = ti.MiddleName,
-            //                          TeacherLoadOtherType = ti.TeacherLoadOtherType.Select(tlot => 
-            //                              new { TypeOfWork = tlot.OtherType}),
-            //                            TeachersLoad = ti.TeacherLoad.Select(tl => 
-            //                                new { LectionB = tl.LectionB,
-            //                                    LectionK = tl.LectionK                                                
-            //                                })
-            //                      })
-            //            })
 
-            //    }).Where(item => Enum.GetName(typeof(Semestr), item.Semestr) == Enum.GetName(typeof(Semestr), Semestr.I)).ToList();
-            ////var q2 = q.Where(item => item.Group.)
 
-            for (int i = 0; i < 19; i++)
+            List<TeacherInfo> teacherInfo = renderBody[8] as List<TeacherInfo>;
+            List<TeacherLoad> teacherLoad = renderBody[9] as List<TeacherLoad>;
+            List<Subject> subjectList = renderBody[5] as List<Subject>;
+            List<Flow> flowList = renderBody[0] as List<Flow>;
+            List<Group> groupList = renderBody[3] as List<Group>;
+            List<TeacherLoadOtherType> tlOtherTypeList = renderBody[10] as List<TeacherLoadOtherType>;
+            List<OtherType> otherTypeList = renderBody[11] as List<OtherType>;
+            List<SubGroup> subGroupList = renderBody[4] as List<SubGroup>;
+            double sumBudgetSemestrOne = 0;
+            double sumContractSemestrOne = 0;
+
+            switch (Discipline)
             {
-                row = table.AddRow();
-                row.VerticalAlignment = VerticalAlignment.Center;
-                //cell = row.Cells[0];
-                //cell.AddParagraph(q[i].EduForm.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                //cell = row.Cells[2];
-                //cell.AddParagraph(q[i].Name.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                //cell = row.Cells[3];
-                //cell.AddParagraph(q[i].Flow.ToString()).Format.Alignment = ParagraphAlignment.Center;
+                case "Лекції":
+                    {
+                        var query = teacherLoad.Where(w => w.LectionB > 0)
+                            .Join(teacherInfo, tl => tl.TeacherInfo.Id, ti => ti.Id, (tl, ti) => new { _TeacherLoad = tl, _TeacherInfo = ti })
+                            .Join(subjectList, prev => prev._TeacherLoad.Subject.Id, sl => sl.Id, (prev, ti) => new { _Teacher = prev, Subject = ti })
+                            .Join(flowList, prev => prev.Subject.Id, fl => fl.Id, (prev, fl) => new { _TeachersAndSubjects = prev, _Flow = fl })
+                            .ToList();
 
+                        for (int i = 0; i < query.Count; i++)
+                        {
+                            row = table.AddRow();
+                            row.VerticalAlignment = VerticalAlignment.Center;
+                            cell = row.Cells[0];
+                            cell.AddParagraph(query[i]._Flow.EduForm.ToString()).Format.Alignment = ParagraphAlignment.Center;
+
+                            var queryCourse = groupList.Where(w => w.Flow.All(w2 => w2.Id == query[i]._Flow.Id)).FirstOrDefault();
+                            cell = row.Cells[1];
+                            cell.AddParagraph(queryCourse.Course.ToString()).Format.Alignment = ParagraphAlignment.Center;
+
+                            cell = row.Cells[2];
+                            cell.AddParagraph(query[i]._TeachersAndSubjects.Subject.Name).Format.Alignment = ParagraphAlignment.Center;
+                            cell = row.Cells[3];
+                            cell.AddParagraph(query[i]._Flow.Name.Replace('|', ' ').ToString()).Format.Alignment = ParagraphAlignment.Center;
+                            cell = row.Cells[4];
+                            cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherInfo.Initials).Format.Alignment = ParagraphAlignment.Center;
+                            cell = row.Cells[5];
+                            cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.TotalHoursB.ToString()).Format.Alignment = ParagraphAlignment.Center;
+                            sumBudgetSemestrOne += query[i]._TeachersAndSubjects._Teacher._TeacherLoad.TotalHoursB;
+
+                            cell = row.Cells[6];
+                            cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.TotalHoursK.ToString()).Format.Alignment = ParagraphAlignment.Center;
+                            sumContractSemestrOne += query[i]._TeachersAndSubjects._Teacher._TeacherLoad.TotalHoursK;
+                        }
+
+                        break;
+                    }
+
+                case "Практичні заняття":
+                    {
+                        var query = teacherLoad.Where(w => w.PracticeB > 0)
+                            .Join(teacherInfo, tl => tl.TeacherInfo.Id, ti => ti.Id, (tl, ti) => new { _TeacherLoad = tl, _TeacherInfo = ti })
+                            .Join(subjectList, prev => prev._TeacherLoad.Subject.Id, sl => sl.Id, (prev, ti) => new { _Teacher = prev, Subject = ti })
+                            .Join(flowList, prev => prev.Subject.Id, fl => fl.Id, (prev, fl) => new { _TeachersAndSubjects = prev, _Flow = fl })
+                            .ToList();
+
+                        for (int i = 0; i < query.Count; i++)
+                        {
+                            row = table.AddRow();
+                            row.VerticalAlignment = VerticalAlignment.Center;
+                            cell = row.Cells[0];
+                            cell.AddParagraph(query[i]._Flow.EduForm.ToString()).Format.Alignment = ParagraphAlignment.Center;
+
+                            var queryCourse = groupList.Where(w => w.Flow.All(w2 => w2.Id == query[i]._Flow.Id)).FirstOrDefault();
+                            cell = row.Cells[1];
+                            cell.AddParagraph(queryCourse.Course.ToString()).Format.Alignment = ParagraphAlignment.Center;
+
+                            cell = row.Cells[2];
+                            cell.AddParagraph(query[i]._TeachersAndSubjects.Subject.Name).Format.Alignment = ParagraphAlignment.Center;
+
+                            var querySG = subGroupList.Where(w => w.Flow.Id == query[0]._Flow.Id).ToList();
+                            cell = row.Cells[3];
+                            cell.AddParagraph(querySG[i].Name.Replace('_', '-')).Format.Alignment = ParagraphAlignment.Center;
+
+                            cell = row.Cells[4];
+                            cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherInfo.Initials).Format.Alignment = ParagraphAlignment.Center;
+                            cell = row.Cells[5];
+                            cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.TotalHoursB.ToString()).Format.Alignment = ParagraphAlignment.Center;
+                            sumBudgetSemestrOne += query[i]._TeachersAndSubjects._Teacher._TeacherLoad.TotalHoursB;
+
+                            cell = row.Cells[6];
+                            cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.TotalHoursK.ToString()).Format.Alignment = ParagraphAlignment.Center;
+                            sumContractSemestrOne += query[i]._TeachersAndSubjects._Teacher._TeacherLoad.TotalHoursK;
+
+                        }
+                        break;
+                    }
+
+                case "Лабораторні заняття":
+                    {
+                        break;
+                    }
+
+                case "Екзамени":
+                    {
+                        break;
+                    }
+
+                case "Розрахункові роботи":
+                    {
+                        break;
+                    }
+
+                case "Модульні роботи":
+                    {
+                        break;
+                    }
+
+                default:
+                    break;
             }
+
+
+
             #endregion
             row = table.AddRow();
             row.VerticalAlignment = VerticalAlignment.Center;
@@ -170,6 +252,10 @@ namespace Reports.ReportPages
             cell.AddParagraph("Всього за 1 семестр").Format.Alignment = ParagraphAlignment.Left;
             cell.Format.Font.Bold = true;
             cell.MergeRight = 4;
+            cell = row.Cells[5];
+            cell.AddParagraph(sumBudgetSemestrOne.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            cell = row.Cells[6];
+            cell.AddParagraph(sumContractSemestrOne.ToString()).Format.Alignment = ParagraphAlignment.Center;
             
         }
 
