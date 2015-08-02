@@ -314,114 +314,114 @@ namespace Reports.ReportPages
 
 
 
-            var query2 = tLOT
-                .Join(teacherInfo, tlot => tlot.TeacherInfo.Id, ti => ti.Id, (tlot, ti) => new { _TLOtherType = tlot, _TeacherInfo = ti })
-                .Where(ti => ti._TeacherInfo.Initials == teacher)
-                .Join(otherTypeList, prev => prev._TLOtherType.OtherType.Id, ot => ot.Id, (prev, ot) => new { _TLOTAndTeacher = prev, _OtherType = ot })
-                .Join(flowList, prev => prev._OtherType.Flow.Id, fl => fl.Id, (prev, fl) => new { _TLOTAndOTAndTeacher = prev, _Flow = fl })
-                //.Where(w => w._Flow.Se)
+            //var query2 = tLOT
+            //    .Join(teacherInfo, tlot => tlot.TeacherInfo.Id, ti => ti.Id, (tlot, ti) => new { _TLOtherType = tlot, _TeacherInfo = ti })
+            //    .Where(ti => ti._TeacherInfo.Initials == teacher)
+            //    .Join(otherTypeList, prev => prev._TLOtherType.OtherType.Id, ot => ot.Id, (prev, ot) => new { _TLOTAndTeacher = prev, _OtherType = ot })
+            //    .Join(flowList, prev => prev._OtherType.Flow.Id, fl => fl.Id, (prev, fl) => new { _TLOTAndOTAndTeacher = prev, _Flow = fl })
+            //    //.Where(w => w._Flow.Se)
 
-                .ToList();
-                //.Where(ti => ti.Initials == teacher)
-                //.Join(teacherLoad, ti => ti.Id, tl => tl.TeacherInfo.Id, (ti, tl) => new { _TeacherInfo = ti, _TeacherLoad = tl })
-                //.Join(subjectList, prev => prev._TeacherLoad.Subject.Id, sl => sl.Id, (prev, ti) => new { _Teacher = prev, Subject = ti })
-                //.Join(flowList, prev => prev.Subject.Id, fl => fl.Id, (prev, fl) => new { _TeachersAndSubjects = prev, _Flow = fl })
-                //.Where(w => w._TeachersAndSubjects.Subject.Semestr == Semestr.I)
-
-
+            //    .ToList();
+            //    //.Where(ti => ti.Initials == teacher)
+            //    //.Join(teacherLoad, ti => ti.Id, tl => tl.TeacherInfo.Id, (ti, tl) => new { _TeacherInfo = ti, _TeacherLoad = tl })
+            //    //.Join(subjectList, prev => prev._TeacherLoad.Subject.Id, sl => sl.Id, (prev, ti) => new { _Teacher = prev, Subject = ti })
+            //    //.Join(flowList, prev => prev.Subject.Id, fl => fl.Id, (prev, fl) => new { _TeachersAndSubjects = prev, _Flow = fl })
+            //    //.Where(w => w._TeachersAndSubjects.Subject.Semestr == Semestr.I)
 
 
-            for (int i = 0; i < query2.Count; i++)
-            {
-                row = table.AddRow();
-                row.VerticalAlignment = VerticalAlignment.Center;
-                /// Entering data semestr 1
-                cell = row.Cells[0];
-                cell.AddParagraph((i + 1).ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[1];
-                cell.AddParagraph(query[i]._TeachersAndSubjects.Subject.ShortName).Format.Alignment = ParagraphAlignment.Center;
 
-                var queryCourse = groupList.Where(w => w.Flow.All(w2 => w2.Id == query[i]._Flow.Id)).FirstOrDefault();
-                cell = row.Cells[2];
-                cell.AddParagraph(queryCourse.Course.ToString()).Format.Alignment = ParagraphAlignment.Center;
 
-                cell = row.Cells[3];
-                cell.AddParagraph(Enum.GetName(typeof(EducationForm), query[i]._Flow.EduForm).Substring(0, 1)).Format.Alignment = ParagraphAlignment.Center;
+            //for (int i = 0; i < query2.Count; i++)
+            //{
+            //    row = table.AddRow();
+            //    row.VerticalAlignment = VerticalAlignment.Center;
+            //    /// Entering data semestr 1
+            //    cell = row.Cells[0];
+            //    cell.AddParagraph((i + 1).ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[1];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects.Subject.ShortName).Format.Alignment = ParagraphAlignment.Center;
 
-                if (query[i]._TeachersAndSubjects._Teacher._TeacherLoad.LectionB > 0)
-                {
-                    cell = row.Cells[4];
-                    cell.AddParagraph(query[i]._Flow.Name.Replace('|', ' ')).Format.Alignment = ParagraphAlignment.Center;
-                }
-                else
-                {
-                    var querySG = subGroupList.Where(w => w.Flow.Id == query[0]._Flow.Id).ToList();
-                    cell = row.Cells[4];
-                    cell.AddParagraph(querySG[i].Name.Replace('_', '-')).Format.Alignment = ParagraphAlignment.Center;
-                }
+            //    var queryCourse = groupList.Where(w => w.Flow.All(w2 => w2.Id == query[i]._Flow.Id)).FirstOrDefault();
+            //    cell = row.Cells[2];
+            //    cell.AddParagraph(queryCourse.Course.ToString()).Format.Alignment = ParagraphAlignment.Center;
 
-                cell = row.Cells[5];
-                cell.AddParagraph(query[i]._Flow.AllCountBudget.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[6];
-                cell.AddParagraph(query[i]._Flow.AllCountContract.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[7];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.LectionB.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[8];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.LectionK.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[9];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.PracticeB.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[10];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.PracticeK.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[11];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.LabB.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[12];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.LabK.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[13];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.ExamB.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[14];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.ExamK.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[15];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.CreditB.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[16];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.CreditK.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[17];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.TestB.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[18];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.TestK.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[19];
-                cell.AddParagraph((query[i]._TeachersAndSubjects._Teacher._TeacherLoad.CourseProjectB + query[i]._TeachersAndSubjects._Teacher._TeacherLoad.CourseWorkB).ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[20];
-                cell.AddParagraph((query[i]._TeachersAndSubjects._Teacher._TeacherLoad.CourseProjectK + query[i]._TeachersAndSubjects._Teacher._TeacherLoad.CourseWorkK).ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[3];
+            //    cell.AddParagraph(Enum.GetName(typeof(EducationForm), query[i]._Flow.EduForm).Substring(0, 1)).Format.Alignment = ParagraphAlignment.Center;
 
-                cell = row.Cells[21];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.RgrB.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[22];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.RgrK.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[23];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.DkrB.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[24];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.DkrK.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[25];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.СonsultationB.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[26];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.СonsultationK.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[27];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.PracticeB.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[28];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.PracticeK.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    if (query[i]._TeachersAndSubjects._Teacher._TeacherLoad.LectionB > 0)
+            //    {
+            //        cell = row.Cells[4];
+            //        cell.AddParagraph(query[i]._Flow.Name.Replace('|', ' ')).Format.Alignment = ParagraphAlignment.Center;
+            //    }
+            //    else
+            //    {
+            //        var querySG = subGroupList.Where(w => w.Flow.Id == query[0]._Flow.Id).ToList();
+            //        cell = row.Cells[4];
+            //        cell.AddParagraph(querySG[i].Name.Replace('_', '-')).Format.Alignment = ParagraphAlignment.Center;
+            //    }
 
-                for (int j = 0; j < 12; j++)
-                {
-                    cell = row.Cells[29 + j];
-                    cell.AddParagraph(Convert.ToString(0)).Format.Alignment = ParagraphAlignment.Center;
-                }
+            //    cell = row.Cells[5];
+            //    cell.AddParagraph(query[i]._Flow.AllCountBudget.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[6];
+            //    cell.AddParagraph(query[i]._Flow.AllCountContract.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[7];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.LectionB.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[8];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.LectionK.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[9];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.PracticeB.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[10];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.PracticeK.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[11];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.LabB.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[12];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.LabK.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[13];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.ExamB.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[14];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.ExamK.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[15];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.CreditB.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[16];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.CreditK.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[17];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.TestB.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[18];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.TestK.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[19];
+            //    cell.AddParagraph((query[i]._TeachersAndSubjects._Teacher._TeacherLoad.CourseProjectB + query[i]._TeachersAndSubjects._Teacher._TeacherLoad.CourseWorkB).ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[20];
+            //    cell.AddParagraph((query[i]._TeachersAndSubjects._Teacher._TeacherLoad.CourseProjectK + query[i]._TeachersAndSubjects._Teacher._TeacherLoad.CourseWorkK).ToString()).Format.Alignment = ParagraphAlignment.Center;
 
-                cell = row.Cells[41];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.TotalHoursB.ToString()).Format.Alignment = ParagraphAlignment.Center;
-                cell = row.Cells[42];
-                cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.TotalHoursK.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[21];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.RgrB.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[22];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.RgrK.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[23];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.DkrB.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[24];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.DkrK.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[25];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.СonsultationB.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[26];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.СonsultationK.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[27];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.PracticeB.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[28];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.PracticeK.ToString()).Format.Alignment = ParagraphAlignment.Center;
 
-            }
+            //    for (int j = 0; j < 12; j++)
+            //    {
+            //        cell = row.Cells[29 + j];
+            //        cell.AddParagraph(Convert.ToString(0)).Format.Alignment = ParagraphAlignment.Center;
+            //    }
+
+            //    cell = row.Cells[41];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.TotalHoursB.ToString()).Format.Alignment = ParagraphAlignment.Center;
+            //    cell = row.Cells[42];
+            //    cell.AddParagraph(query[i]._TeachersAndSubjects._Teacher._TeacherLoad.TotalHoursK.ToString()).Format.Alignment = ParagraphAlignment.Center;
+
+            //}
 
 
             #endregion

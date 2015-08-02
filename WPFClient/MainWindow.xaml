@@ -27,6 +27,8 @@
             </MenuItem>
             <MenuItem Header="Звіти" Width="auto" Height="25" Click="Reports_MenuItem_Click">
             </MenuItem>
+            <MenuItem Header="Налаштування" Width="auto" Height="25">
+            </MenuItem>
         </Menu>
         <DataGrid Name="DataGridTeacherTotalLoad" SelectionChanged="DataGridTeacherTotalLoad_OnSelectionChanged" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Height="240" Width="816">
             <DataGrid.Columns>
